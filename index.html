@@ -1,682 +1,602 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduCraft | Professional Assignment Writing Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>EduCraft | Professional Assignment & Academic Project Writing Services</title>
+    <meta name="description" content="EduCraft provides expert assignment writing, academic projects, research assistance, and formatting for college and university students. Starting at ₹300 for 10 pages.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f9',
+                            100: '#dbe4f0',
+                            800: '#0f2a4a',
+                            900: '#091c33',
+                            deep: '#0a1728',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#fac02e',
+                            500: '#f5b025',
+                            600: '#e09b13',
+                            700: '#b8790b',
+                        },
+                        cream: {
+                            50: '#fffdfa',
+                            100: '#fdfbf7',
+                            200: '#f7f2e9',
+                            300: '#efe6d5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        hand: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        :root {
-            --primary-navy: #002147;
-            --secondary-navy: #0a3663;
-            --accent-gold: #FFC107;
-            --bg-cream: #FFFDF9;
-            --text-dark: #2D3748;
-            --text-light: #718096;
-            --border-color: #E2E8F0;
+        .handwritten-badge { font-family: 'Caveat', cursive; }
+        .poster-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#0f2a4a 0.75px, transparent 0.75px), radial-gradient(#0f2a4a 0.75px, #fdfbf7 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+        .pulse-whatsapp {
+            animation: pulse-green 2s infinite;
         }
-
-        body {
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* Header & Navbar */
-        header {
-            background: var(--primary-navy);
-            color: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo span {
-            color: var(--accent-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            background: #22bf5b;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 5%;
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--accent-gold);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: #cbd5e1;
-        }
-
-        .badge-offer {
-            background: var(--accent-gold);
-            color: var(--primary-navy);
-            font-weight: 700;
-            padding: 8px 20px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
-        }
-
-        /* Sections General */
-        section {
-            padding: 70px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary-navy);
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-        }
-
-        /* Calculator Section */
-        .calculator-box {
-            background: white;
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,33,71,0.08);
-            border: 1px solid var(--border-color);
-        }
-
-        .calc-group {
-            margin-bottom: 20px;
-        }
-
-        .calc-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--primary-navy);
-        }
-
-        .calc-group input, .calc-group select, .calc-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 1rem;
-            outline: none;
-            background: #f8fafc;
-        }
-
-        .calc-result {
-            background: var(--primary-navy);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .calc-result h3 {
-            font-size: 2rem;
-            color: var(--accent-gold);
-            margin: 10px 0 20px;
-        }
-
-        /* Gallery Showcase */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            padding: 20px;
-        }
-
-        .gallery-card h4 {
-            color: var(--primary-navy);
-            margin-bottom: 5px;
-        }
-
-        .gallery-card span {
-            font-size: 0.75rem;
-            background: rgba(0,33,71,0.08);
-            color: var(--primary-navy);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .gallery-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 10px;
-        }
-
-        /* Testimonials Section */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .review-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .review-stars {
-            color: var(--accent-gold);
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-
-        .review-card p {
-            font-style: italic;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .review-author {
-            font-weight: 600;
-            color: var(--primary-navy);
-            font-size: 0.9rem;
-        }
-
-        .review-form-box {
-            background: white;
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 25px rgba(0,33,71,0.05);
-        }
-
-        /* Admin / Owner Secret Section */
-        #adminSection {
-            display: none;
-            background: #1e293b;
-            color: white;
-            padding: 50px 5%;
-            margin-top: 40px;
-            border-top: 5px solid var(--accent-gold);
-        }
-
-        .admin-panel-box {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #0f172a;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .admin-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #334155;
-        }
-
-        .stat-card h3 {
-            font-size: 2.2rem;
-            color: var(--accent-gold);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-navy);
-            color: white;
-            text-align: center;
-            padding: 30px 5%;
-            font-size: 0.9rem;
-        }
-
-        .admin-trigger {
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #64748b;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        .admin-trigger:hover {
-            color: white;
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
     </style>
 </head>
-<body>
+<body class="font-sans bg-cream-100 text-slate-800 antialiased selection:bg-gold-500 selection:text-navy-900">
 
-    <!-- Navbar -->
-    <header>
-        <a href="#" class="logo"><i class="fa-solid fa-book-open"></i> Edu<span>Craft</span></a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#calculator">Calculator</a></li>
-            <li><a href="#samples">Work Samples</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-        </ul>
-        <a href="https://wa.me/918960781789?text=Hello%20EduCraft,%20I%20want%20help%20with%20my%20assignment!" target="_blank" class="btn-whatsapp">
-            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="badge-offer">🔥 Special Offer: ₹300 for 10 Pages</div>
-        <h1>Your Assignment, <span>Our Priority</span></h1>
-        <p>Reliable, professional, and plagiarism-free assignment writing assistance for college and university students.</p>
-        <a href="https://wa.me/918960781789?text=Hello%20EduCraft,%20I%20want%20to%20place%20an%20order." target="_blank" class="btn-whatsapp" style="font-size: 1.1rem; padding: 12px 30px;">
-            <i class="fa-brands fa-whatsapp"></i> Direct WhatsApp Order
-        </a>
-    </section>
-
-    <!-- Smart Price Calculator -->
-    <section id="calculator">
-        <div class="section-title">
-            <h2>Smart Price Calculator</h2>
-            <p>Calculate your estimated cost instantly based on standard flat pricing.</p>
-        </div>
-        <div class="calculator-box">
-            <div class="calc-group">
-                <label for="numPages">Number of Pages: <span id="pageCountDisplay" style="color: var(--primary-navy);">10</span></label>
-                <input type="range" id="numPages" min="1" max="100" value="10" oninput="calculateTotal()">
-            </div>
-            <div class="calc-group">
-                <label for="numDiagrams">Number of Diagrams / Flowcharts (₹10 per diagram):</label>
-                <input type="number" id="numDiagrams" min="0" value="0" oninput="calculateTotal()">
-            </div>
-            <div class="calc-group">
-                <label for="numCharts">Number of Charts & Graphs (₹10 per chart):</label>
-                <input type="number" id="numCharts" min="0" value="0" oninput="calculateTotal()">
-            </div>
-
-            <div class="calc-result">
-                <p>Estimated Total Price</p>
-                <h3 id="totalPrice">₹300</h3>
-                <a id="whatsappQuoteBtn" href="https://wa.me/918960781789?text=Hello%20EduCraft,%20I%20calculated%20an%20estimate%20of%20₹300%20for%20my%20assignment." target="_blank" class="btn-whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i> Send This Quote on WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Showcase Gallery -->
-    <section id="samples" style="background: white;">
-        <div class="section-title">
-            <h2>Our Work Samples</h2>
-            <p>Browse through categories of our verified academic writing samples.</p>
-        </div>
-        <div class="gallery-grid" id="dynamicGalleryGrid">
-            <div class="gallery-card">
-                <span>Assignment</span>
-                <h4>Data Structures Research Report</h4>
-                <p>Clean formatting with strict reference styling and clear code notes.</p>
-            </div>
-            <div class="gallery-card">
-                <span>Practical File</span>
-                <h4>Physics Lab Observation & Derivations</h4>
-                <p>Neat handwritten structure with well-labeled measurement diagrams.</p>
-            </div>
-            <div class="gallery-card">
-                <span>Presentation</span>
-                <h4>Business Management Case Study</h4>
-                <p>Strategic slide layouts featuring structured data charts and summaries.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Reviews & Submission Section -->
-    <section id="reviews">
-        <div class="section-title">
-            <h2>Student Reviews & Feedback</h2>
-            <p>See what students say about our work, or leave your own review!</p>
-        </div>
-
-        <!-- Reviews Grid Display -->
-        <div class="reviews-grid" id="dynamicReviewsGrid">
-            <div class="review-card">
-                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"EduCraft helped me finish my research report just before the deadline. Extremely professional formatting!"</p>
-                <div class="review-author">- Ananya S. (B.Tech CSE)</div>
-            </div>
-            <div class="review-card">
-                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Super affordable at ₹300 for 10 pages, and the diagrams in my practical file were exceptionally neat."</p>
-                <div class="review-author">- Rahul M. (B.Sc Physics)</div>
-            </div>
-        </div>
-
-        <!-- Add Review Form -->
-        <div class="review-form-box">
-            <h3 style="color: var(--primary-navy); margin-bottom: 20px; font-size: 1.3rem;">Leave Your Review</h3>
-            <div class="calc-group">
-                <label>Your Name / Branch</label>
-                <input type="text" id="reviewerName" placeholder="e.g., Priya K. (MBA)">
-            </div>
-            <div class="calc-group">
-                <label>Rating</label>
-                <select id="reviewRating">
-                    <option value="5">⭐⭐⭐⭐⭐ (5/5 Stars)</option>
-                    <option value="4">⭐⭐⭐⭐ (4/5 Stars)</option>
-                    <option value="3">⭐⭐⭐ (3/5 Stars)</option>
-                </select>
-            </div>
-            <div class="calc-group">
-                <label>Your Feedback</label>
-                <textarea id="reviewText" rows="3" placeholder="Write your experience with EduCraft..."></textarea>
-            </div>
-            <button onclick="submitReview()" class="btn-whatsapp" style="width: 100%; justify-content: center; border: none; cursor: pointer;">Submit Review</button>
-        </div>
-    </section>
-
-    <!-- Admin / Owner Secret Section -->
-    <div id="adminSection">
-        <div class="admin-panel-box">
-            <h2 style="color: var(--accent-gold); margin-bottom: 20px;"><i class="fa-solid fa-lock"></i> Owner Admin Dashboard</h2>
-            
-            <div class="admin-stats">
-                <div class="stat-card">
-                    <p style="color: #94a3b8; font-size: 0.9rem;">Total Website Visits</p>
-                    <h3 id="visitCountDisplay">1</h3>
-                </div>
-                <div class="stat-card">
-                    <p style="color: #94a3b8; font-size: 0.9rem;">Status</p>
-                    <h3 style="font-size: 1.5rem; color: #22c55e; margin-top: 10px;">Live & Secure</h3>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Upload New Sample Work</h3>
-            <div class="calc-group">
-                <label style="color: #cbd5e1;">Sample Title</label>
-                <input type="text" id="newTitle" placeholder="e.g., Chemistry Organic Lab Report" style="background: #1e293b; color: white;">
-            </div>
-            <div class="calc-group">
-                <label style="color: #cbd5e1;">Category</label>
-                <input type="text" id="newCategory" placeholder="e.g., Practical File / Assignment" style="background: #1e293b; color: white;">
-            </div>
-            <div class="calc-group">
-                <label style="color: #cbd5e1;">Description</label>
-                <input type="text" id="newDesc" placeholder="Brief description of the work sample" style="background: #1e293b; color: white;">
-            </div>
-            <button onclick="addNewSample()" class="btn-whatsapp" style="width: 100%; justify-content: center; border: none; cursor: pointer; margin-bottom: 25px;">Add Sample to Gallery</button>
-            
-            <button onclick="closeAdmin()" style="background: #334155; color: white; border: none; padding: 10px; width: 100%; border-radius: 8px; cursor: pointer;">Close Admin Panel</button>
+    <!-- Top Announcement Bar -->
+    <div class="bg-navy-900 text-white text-xs sm:text-sm py-2 px-4 text-center border-b border-navy-800">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+            <span class="bg-gold-500 text-navy-900 font-bold px-2 py-0.5 rounded-full text-xs uppercase tracking-wider">Super Saver</span>
+            <span class="font-medium">Special Offer: Complete Assignment Assistance Starting at <strong class="text-gold-400">₹300 for 10 Pages!</strong></span>
+            <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project." target="_blank" class="underline hover:text-gold-400 transition ml-1 font-semibold">Claim Now &rarr;</a>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 EduCraft. All rights reserved.</p>
-        <button class="admin-trigger" onclick="openAdminPrompt()">⚙️ Owner Login</button>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-cream-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-navy-800 rounded-xl flex items-center justify-center text-gold-500 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold text-navy-800 tracking-tight block leading-none">EduCraft<span class="text-gold-500">.</span></span>
+                    <span class="text-xs font-semibold text-slate-500 tracking-wider">Your Assignment, Our Priority</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+                <a href="#home" class="hover:text-gold-600 transition">Home</a>
+                <a href="#about" class="hover:text-gold-600 transition">About Us</a>
+                <a href="#services" class="hover:text-gold-600 transition">Services</a>
+                <a href="#pricing" class="hover:text-gold-600 transition">Pricing Calculator</a>
+                <a href="#subjects" class="hover:text-gold-600 transition">Subjects</a>
+                <a href="#samples" class="hover:text-gold-600 transition">Work Samples</a>
+                <a href="#reviews" class="hover:text-gold-600 transition">Reviews</a>
+                <a href="#contact" class="hover:text-gold-600 transition">Contact</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-full shadow-md transition flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WhatsApp Us</span>
+                </a>
+            </div>
+
+            <button id="menu-btn" class="lg:hidden p-2 text-navy-800 hover:text-gold-600 focus:outline-none" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Home</a>
+            <a href="#about" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">About Us</a>
+            <a href="#services" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Services</a>
+            <a href="#pricing" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Pricing Calculator</a>
+            <a href="#subjects" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Subjects Covered</a>
+            <a href="#samples" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Work Samples</a>
+            <a href="#reviews" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Student Reviews</a>
+            <a href="#contact" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Contact Us</a>
+            <div class="pt-2">
+                <a href="https://wa.me/918960781789?text=Hello%20EduCraft!" target="_blank" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Connect on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO SECTION -->
+    <section id="home" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 poster-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-gold-500/20 text-navy-900 border border-gold-500/40 px-4 py-1.5 rounded-full font-bold text-sm">
+                        <i class="fa-solid fa-sparkles text-gold-600"></i>
+                        <span>Save Time • Reduce Stress • Get Better Results</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-navy-900 tracking-tight leading-[1.15]">
+                        Professional Assignment Writing Help for <span class="text-gold-600 underline decoration-navy-800 decoration-wavy decoration-2">College Students</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-700 font-medium max-w-2xl mx-auto lg:mx-0">
+                        Struggling with deadlines? <strong class="text-navy-800">EduCraft</strong> delivers high-quality, plagiarism-free, and perfectly formatted academic assignments and reports.
+                    </p>
+
+                    <!-- Poster-Style Pricing Banner Box -->
+                    <div class="bg-navy-800 text-white p-6 rounded-2xl shadow-2xl border-4 border-gold-500 max-w-lg mx-auto lg:mx-0">
+                        <div class="flex items-center justify-between gap-4">
+                            <div>
+                                <p class="text-cream-200 text-xs uppercase tracking-wider font-semibold">Affordable Academic Help</p>
+                                <p class="text-3xl sm:text-4xl font-extrabold text-gold-400 mt-1">Starting at ₹300</p>
+                                <p class="text-sm text-slate-200 mt-0.5">Get up to <strong class="text-gold-300">10 Pages</strong> for just ₹300!</p>
+                            </div>
+                            <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20to%20order%20assignment." target="_blank" class="bg-gold-500 hover:bg-gold-400 text-navy-900 font-extrabold px-5 py-3 rounded-xl transition text-sm text-center">
+                                ORDER NOW
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://wa.me/918960781789?text=Hello%20EduCraft!" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-xl shadow-lg flex items-center justify-center gap-3 text-lg">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Get Started on WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="relative max-w-md mx-auto">
+                        <div class="absolute inset-0 bg-gold-500 rounded-3xl transform rotate-3 shadow-xl"></div>
+                        <div class="relative bg-navy-800 text-white p-8 rounded-3xl shadow-2xl border-2 border-gold-400 space-y-6">
+                            <div class="text-center border-b border-navy-700 pb-5">
+                                <div class="inline-block p-3 bg-white/10 rounded-full mb-3">
+                                    <i class="fa-solid fa-award text-4xl text-gold-400"></i>
+                                </div>
+                                <h3 class="text-2xl font-black text-white">Good Assignments</h3>
+                                <p class="handwritten-badge text-2xl text-gold-400 font-bold mt-1">= Better Grades Guaranteed!</p>
+                            </div>
+
+                            <div class="space-y-4 text-sm">
+                                <div class="flex items-start gap-3 bg-navy-900/60 p-3 rounded-xl">
+                                    <i class="fa-solid fa-file-pen text-gold-400 text-lg mt-0.5"></i>
+                                    <div><strong class="text-white">100% Original:</strong> Plagiarism-free work.</div>
+                                </div>
+                                <div class="flex items-start gap-3 bg-navy-900/60 p-3 rounded-xl">
+                                    <i class="fa-solid fa-clock text-gold-400 text-lg mt-0.5"></i>
+                                    <div><strong class="text-white">On-Time:</strong> Never miss a deadline.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY HIGHLIGHTS BAR -->
+    <section class="bg-navy-900 text-white py-8 border-y-4 border-gold-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <i class="fa-solid fa-file-shield text-2xl text-gold-400 mb-1"></i>
+                    <h4 class="font-bold text-sm">Original Content</h4>
+                </div>
+                <div>
+                    <i class="fa-solid fa-ruler-combined text-2xl text-gold-400 mb-1"></i>
+                    <h4 class="font-bold text-sm">Proper Formatting</h4>
+                </div>
+                <div>
+                    <i class="fa-solid fa-stopwatch text-2xl text-gold-400 mb-1"></i>
+                    <h4 class="font-bold text-sm">On-Time Delivery</h4>
+                </div>
+                <div>
+                    <i class="fa-solid fa-lock text-2xl text-gold-400 mb-1"></i>
+                    <h4 class="font-bold text-sm">100% Confidential</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="bg-cream-200 text-navy-800 font-bold px-3.5 py-1 rounded-md text-xs uppercase tracking-wider">About EduCraft</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 leading-tight">
+                        Empowering Students with Premium Academic Support
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        At <strong class="text-navy-800">EduCraft</strong>, we understand college life gets overwhelming with packed schedules and strict deadlines. We deliver well-researched, accurately formatted content to make your academic journey smooth.
+                    </p>
+                </div>
+                <div class="bg-navy-800 p-8 rounded-3xl text-white shadow-xl border-2 border-gold-400">
+                    <h3 class="text-xl font-bold text-gold-400 mb-4">Why Students Trust Us</h3>
+                    <ul class="space-y-3 text-sm text-slate-200">
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> Custom-written as per university guidelines</li>
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> Diagrams, flowcharts & graphs integration</li>
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> Direct WhatsApp communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">What We Offer</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Comprehensive Academic Services</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-7 rounded-2xl shadow-md border border-cream-300">
+                    <div class="w-12 h-12 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-book-open"></i></div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">College Assignments</h3>
+                    <p class="text-slate-600 text-sm">Well-researched, structured assignments tailored to your syllabus.</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl shadow-md border border-cream-300">
+                    <div class="w-12 h-12 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Academic Projects</h3>
+                    <p class="text-slate-600 text-sm">End-to-end documentation, reports, and summaries.</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl shadow-md border border-cream-300">
+                    <div class="w-12 h-12 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-file-powerpoint"></i></div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">PPT Presentations</h3>
+                    <p class="text-slate-600 text-sm">Engaging slide decks with speaker notes and visuals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING & SMART CALCULATOR SECTION -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Transparent Rates</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Smart Price Calculator</h2>
+                <p class="text-slate-600 mt-2">Base price starts at ₹300 for 10 pages. Each diagram/chart costs ₹10 extra.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-navy-900 to-navy-800 text-white p-8 sm:p-10 rounded-3xl shadow-2xl border-4 border-gold-500">
+                <div class="grid sm:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gold-400 uppercase mb-2">Number of Pages: <span id="pageCountDisplay" class="text-white">10</span></label>
+                        <input type="range" id="numPages" min="1" max="100" value="10" oninput="calculateTotal()" class="w-full accent-gold-500 cursor-pointer">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gold-400 uppercase mb-2">Number of Diagrams / Charts (₹10 each):</label>
+                        <input type="number" id="numVisuals" min="0" value="0" oninput="calculateTotal()" class="w-full bg-navy-900 border border-navy-700 rounded-xl p-2.5 text-white">
+                    </div>
+                </div>
+
+                <div class="bg-navy-900/80 p-6 rounded-2xl text-center border border-navy-700">
+                    <p class="text-sm text-slate-300">Estimated Total Price</p>
+                    <div class="text-4xl font-black text-gold-400 my-2" id="totalPrice">₹300</div>
+                    <a id="whatsappQuoteBtn" href="https://wa.me/918960781789?text=Hello%20EduCraft,%20I%20calculated%20an%20estimate%20of%20₹300%20for%20my%20assignment." target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg mt-3">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Send This Quote on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK SAMPLES GALLERY SECTION -->
+    <section id="samples" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Our Work Samples</h2>
+                <p class="text-slate-600 mt-2">Explore sample verified academic writing files.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6" id="dynamicGalleryGrid">
+                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm">
+                    <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">Assignment</span>
+                    <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">Data Structures Research Report</h4>
+                    <p class="text-xs text-slate-600">Clean formatting with strict reference styling and clear code notes.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm">
+                    <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">Practical File</span>
+                    <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">Physics Lab Observation & Derivations</h4>
+                    <p class="text-xs text-slate-600">Neat handwritten structure with well-labeled measurement diagrams.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm">
+                    <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">Presentation</span>
+                    <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">Business Management Case Study</h4>
+                    <p class="text-xs text-slate-600">Strategic slide layouts featuring structured data charts and summaries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Feedback</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Student Reviews</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-12" id="dynamicReviewsGrid">
+                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300">
+                    <div class="text-gold-500 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-sm italic text-slate-700 mb-3">"EduCraft helped me finish my research report right before the deadline. Extremely professional formatting!"</p>
+                    <span class="font-bold text-xs text-navy-900">- Ananya S. (B.Tech CSE)</span>
+                </div>
+                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300">
+                    <div class="text-gold-500 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-sm italic text-slate-700 mb-3">"Super affordable at ₹300 for 10 pages, and the diagrams in my practical file were exceptionally neat."</p>
+                    <span class="font-bold text-xs text-navy-900">- Rahul M. (B.Sc Physics)</span>
+                </div>
+            </div>
+
+            <!-- Leave a Review Form -->
+            <div class="max-w-xl mx-auto bg-cream-100 p-8 rounded-2xl border border-cream-300">
+                <h3 class="text-lg font-bold text-navy-900 mb-4">Leave Your Review</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name / Branch</label>
+                        <input type="text" id="reviewerName" placeholder="e.g., Priya K. (MBA)" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Rating</label>
+                        <select id="reviewRating" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm">
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5 Stars)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5 Stars)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Feedback</label>
+                        <textarea id="reviewText" rows="3" placeholder="Write your experience..." class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm"></textarea>
+                    </div>
+                    <button onclick="submitReview()" class="w-full bg-navy-800 hover:bg-navy-900 text-white font-bold py-3 rounded-xl transition">Submit Review</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBJECTS COVERED SECTION -->
+    <section id="subjects" class="py-20 bg-cream-50 poster-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="bg-navy-800 text-gold-400 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Academic Spectrum</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3 mb-12">We Help With All Subjects</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+                <div class="bg-white p-5 rounded-2xl border border-cream-300 shadow-sm"><h3 class="font-bold text-sm text-navy-900">Science</h3></div>
+                <div class="bg-white p-5 rounded-2xl border border-cream-300 shadow-sm"><h3 class="font-bold text-sm text-navy-900">Engineering</h3></div>
+                <div class="bg-white p-5 rounded-2xl border border-cream-300 shadow-sm"><h3 class="font-bold text-sm text-navy-900">Commerce</h3></div>
+                <div class="bg-white p-5 rounded-2xl border border-cream-300 shadow-sm"><h3 class="font-bold text-sm text-navy-900">Computer Science</h3></div>
+                <div class="bg-white p-5 rounded-2xl border border-cream-300 shadow-sm"><h3 class="font-bold text-sm text-navy-900">Humanities</h3></div>
+                <div class="bg-white p-5 rounded-2xl border border-cream-300 shadow-sm"><h3 class="font-bold text-sm text-navy-900">Arts & Others</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Get In Touch</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-navy-900">Let’s Make Your Assignment Stress-Free!</h2>
+            <p class="text-slate-600 max-w-xl mx-auto">Message us directly on WhatsApp for quick inquiries, price quotations, and deadline management.</p>
+            <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance." target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-full text-lg shadow-xl transition">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>Chat on WhatsApp (8960781789)</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- HIDDEN OWNER ADMIN SECTION -->
+    <div id="adminSection" class="hidden bg-slate-900 text-white py-16 px-6 border-t-4 border-gold-500">
+        <div class="max-w-xl mx-auto bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 space-y-6">
+            <h3 class="text-xl font-bold text-gold-400 flex items-center gap-2"><i class="fa-solid fa-lock"></i> Owner Admin Dashboard</h3>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
+                    <span class="text-xs text-slate-400">Total Visits</span>
+                    <div class="text-3xl font-black text-gold-400 mt-1" id="visitCountDisplay">1</div>
+                </div>
+                <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
+                    <span class="text-xs text-slate-400">Status</span>
+                    <div class="text-sm font-bold text-emerald-400 mt-2">Active & Secure</div>
+                </div>
+            </div>
+
+            <div class="space-y-4 pt-2 border-t border-slate-700">
+                <h4 class="font-bold text-sm text-white">Upload New Work Sample</h4>
+                <input type="text" id="newTitle" placeholder="Sample Title (e.g., Organic Chem Lab)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white">
+                <input type="text" id="newCategory" placeholder="Category (e.g., Practical File)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white">
+                <input type="text" id="newDesc" placeholder="Brief description" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white">
+                <button onclick="addNewSample()" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-900 font-extrabold py-3 rounded-xl transition">Add Sample to Gallery</button>
+            </div>
+
+            <button onclick="closeAdmin()" class="w-full bg-slate-700 text-slate-300 py-2.5 rounded-xl text-xs font-bold">Close Admin Panel</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-deep text-white border-t border-navy-800 py-12 text-center space-y-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-sm">&copy; 2026 EduCraft. All rights reserved. Your Assignment, Our Priority.</p>
+            <button class="admin-trigger text-xs text-slate-500 hover:text-gold-400 underline bg-transparent border-none cursor-pointer mt-2" onclick="openAdminPrompt()">⚙️ Owner Login</button>
+        </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/918960781789?text=Hello%20EduCraft!" target="_blank" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-2xl flex items-center justify-center pulse-whatsapp transition hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Track Visits & Load Data on Startup
+        // Visit Tracker & Storage Initialization
         window.addEventListener('DOMContentLoaded', () => {
             let visits = localStorage.getItem('educraft_visits');
-            if (!visits) {
-                visits = 1;
-            } else {
-                visits = parseInt(visits) + 1;
-            }
+            visits = !visits ? 1 : parseInt(visits) + 1;
             localStorage.setItem('educraft_visits', visits);
             document.getElementById('visitCountDisplay').innerText = visits;
 
             loadSavedSamples();
             loadSavedReviews();
+            calculateTotal();
         });
 
-        // Price Calculator Logic
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Price Calculator
         function calculateTotal() {
             const pages = parseInt(document.getElementById('numPages').value) || 0;
-            const diagrams = parseInt(document.getElementById('numDiagrams').value) || 0;
-            const charts = parseInt(document.getElementById('numCharts').value) || 0;
-
+            const visuals = parseInt(document.getElementById('numVisuals').value) || 0;
             document.getElementById('pageCountDisplay').innerText = pages;
 
-            let pageCost = pages * 30; // ₹30 per page base
-            let extrasCost = (diagrams + charts) * 10; // ₹10 per diagram/chart
-            let total = pageCost + extrasCost;
+            let price = (pages * 30) + (visuals * 10); // ₹30/page base, ₹10 per diagram
+            document.getElementById('totalPrice').innerText = '₹' + price;
 
-            document.getElementById('totalPrice').innerText = '₹' + total;
-
-            const waMsg = encodeURIComponent(`Hello EduCraft, I calculated an estimate of ₹${total} for my assignment (${pages} pages, ${diagrams} diagrams, ${charts} charts). Please confirm.`);
-            document.getElementById('whatsappQuoteBtn').href = `https://wa.me/918960781789?text=${waMsg}`;
+            const msg = encodeURIComponent(`Hello EduCraft, I calculated an estimate of ₹${price} for my assignment (${pages} pages, ${visuals} diagrams/charts). Please confirm.`);
+            document.getElementById('whatsappQuoteBtn').href = `https://wa.me/918960781789?text=${msg}`;
         }
 
-        // Student Review Submission Logic
+        // Reviews Submission
         function submitReview() {
             const name = document.getElementById('reviewerName').value.trim();
             const rating = parseInt(document.getElementById('reviewRating').value);
             const text = document.getElementById('reviewText').value.trim();
 
-            if (!name || !text) {
-                alert("Please fill in your name and feedback before submitting.");
-                return;
-            }
+            if (!name || !text) { alert("Please fill in your name and feedback."); return; }
 
-            const newReview = { name, rating, text };
             let reviews = JSON.parse(localStorage.getItem('educraft_reviews') || '[]');
-            reviews.push(newReview);
+            reviews.push({ name, rating, text });
             localStorage.setItem('educraft_reviews', JSON.stringify(reviews));
 
-            alert("Thank you for your review! It has been posted successfully.");
+            alert("Thank you for your review!");
             document.getElementById('reviewerName').value = '';
             document.getElementById('reviewText').value = '';
-
             loadSavedReviews();
         }
 
         function loadSavedReviews() {
             const grid = document.getElementById('dynamicReviewsGrid');
             let reviews = JSON.parse(localStorage.getItem('educraft_reviews') || '[]');
-
             let html = `
-                <div class="review-card">
-                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p>"EduCraft helped me finish my research report just before the deadline. Extremely professional formatting!"</p>
-                    <div class="review-author">- Ananya S. (B.Tech CSE)</div>
+                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300">
+                    <div class="text-gold-500 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-sm italic text-slate-700 mb-3">"EduCraft helped me finish my research report right before the deadline. Extremely professional formatting!"</p>
+                    <span class="font-bold text-xs text-navy-900">- Ananya S. (B.Tech CSE)</span>
                 </div>
-                <div class="review-card">
-                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p>"Super affordable at ₹300 for 10 pages, and the diagrams in my practical file were exceptionally neat."</p>
-                    <div class="review-author">- Rahul M. (B.Sc Physics)</div>
+                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300">
+                    <div class="text-gold-500 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-sm italic text-slate-700 mb-3">"Super affordable at ₹300 for 10 pages, and the diagrams in my practical file were exceptionally neat."</p>
+                    <span class="font-bold text-xs text-navy-900">- Rahul M. (B.Sc Physics)</span>
                 </div>
             `;
-
             reviews.forEach(r => {
-                let starsHTML = '';
-                for(let i=0; i<r.rating; i++) { starsHTML += '<i class="fa-solid fa-star"></i>'; }
-                
+                let stars = '<i class="fa-solid fa-star"></i>'.repeat(r.rating);
                 html += `
-                    <div class="review-card" style="border-left: 4px solid var(--accent-gold);">
-                        <div class="review-stars">${starsHTML}</div>
-                        <p>"${r.text}"</p>
-                        <div class="review-author">- ${r.name}</div>
+                    <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 border-l-4 border-l-gold-500">
+                        <div class="text-gold-500 text-sm mb-2">${stars}</div>
+                        <p class="text-sm italic text-slate-700 mb-3">"${r.text}"</p>
+                        <span class="font-bold text-xs text-navy-900">- ${r.name}</span>
                     </div>
                 `;
             });
-
             grid.innerHTML = html;
         }
 
-        // Secret Admin Panel Protection
+        // Owner Admin Management
         function openAdminPrompt() {
-            const password = prompt("Enter Owner Admin Password:");
-            if (password === "educraft123") {
-                document.getElementById('adminSection').style.display = 'block';
+            const pwd = prompt("Enter Owner Admin Password:");
+            if (pwd === "educraft123") {
+                document.getElementById('adminSection').classList.remove('hidden');
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-            } else if (password !== null) {
+            } else if (pwd !== null) {
                 alert("Incorrect Password!");
             }
         }
+        function closeAdmin() { document.getElementById('adminSection').classList.add('hidden'); }
 
-        function closeAdmin() {
-            document.getElementById('adminSection').style.display = 'none';
-        }
-
-        // Add New Sample Work
         function addNewSample() {
             const title = document.getElementById('newTitle').value.trim();
             const category = document.getElementById('newCategory').value.trim();
             const desc = document.getElementById('newDesc').value.trim();
 
-            if (!title || !category || !desc) {
-                alert("Please fill in all fields!");
-                return;
-            }
+            if (!title || !category || !desc) { alert("Fill all sample fields!"); return; }
 
-            const newSample = { title, category, desc };
-            let customSamples = JSON.parse(localStorage.getItem('educraft_samples') || '[]');
-            customSamples.push(newSample);
-            localStorage.setItem('educraft_samples', JSON.stringify(customSamples));
+            let samples = JSON.parse(localStorage.getItem('educraft_samples') || '[]');
+            samples.push({ title, category, desc });
+            localStorage.setItem('educraft_samples', JSON.stringify(samples));
 
             alert("Sample added successfully!");
             document.getElementById('newTitle').value = '';
             document.getElementById('newCategory').value = '';
             document.getElementById('newDesc').value = '';
-
             loadSavedSamples();
         }
 
         function loadSavedSamples() {
             const grid = document.getElementById('dynamicGalleryGrid');
-            let customSamples = JSON.parse(localStorage.getItem('educraft_samples') || '[]');
-
+            let samples = JSON.parse(localStorage.getItem('educraft_samples') || '[]');
             let html = `
-                <div class="gallery-card">
-                    <span>Assignment</span>
-                    <h4>Data Structures Research Report</h4>
-                    <p>Clean formatting with strict reference styling and clear code notes.</p>
+                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm">
+                    <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">Assignment</span>
+                    <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">Data Structures Research Report</h4>
+                    <p class="text-xs text-slate-600">Clean formatting with strict reference styling and clear code notes.</p>
                 </div>
-                <div class="gallery-card">
-                    <span>Practical File</span>
-                    <h4>Physics Lab Observation & Derivations</h4>
-                    <p>Neat handwritten structure with well-labeled measurement diagrams.</p>
+                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm">
+                    <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">Practical File</span>
+                    <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">Physics Lab Observation & Derivations</h4>
+                    <p class="text-xs text-slate-600">Neat handwritten structure with well-labeled measurement diagrams.</p>
                 </div>
-                <div class="gallery-card">
-                    <span>Presentation</span>
-                    <h4>Business Management Case Study</h4>
-                    <p>Strategic slide layouts featuring structured data charts and summaries.</p>
+                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm">
+                    <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">Presentation</span>
+                    <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">Business Management Case Study</h4>
+                    <p class="text-xs text-slate-600">Strategic slide layouts featuring structured data charts and summaries.</p>
                 </div>
             `;
-
-            customSamples.forEach(s => {
+            samples.forEach(s => {
                 html += `
-                    <div class="gallery-card" style="border-left: 4px solid var(--accent-gold);">
-                        <span>${s.category}</span>
-                        <h4>${s.title}</h4>
-                        <p>${s.desc}</p>
+                    <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm border-l-4 border-l-gold-500">
+                        <span class="text-xs bg-navy-800 text-gold-400 px-2.5 py-1 rounded font-bold uppercase">${s.category}</span>
+                        <h4 class="text-lg font-bold text-navy-900 mt-3 mb-1">${s.title}</h4>
+                        <p class="text-xs text-slate-600">${s.desc}</p>
                     </div>
                 `;
             });
-
             grid.innerHTML = html;
         }
-
-        calculateTotal();
     </script>
 </body>
 </html>

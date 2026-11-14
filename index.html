@@ -709,7 +709,7 @@
 
             <!-- Gallery Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
-                <!-- Populated dynamically via JS -->
+                <!-- Populated dynamically via Firebase -->
             </div>
         </div>
     </section>
@@ -843,7 +843,7 @@
 
             <!-- Reviews Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14" id="reviews-grid">
-                <!-- Populated dynamically via JS -->
+                <!-- Populated dynamically via Firebase -->
             </div>
 
             <!-- Customer Leave a Review Form -->
@@ -1026,7 +1026,7 @@
                     </p>
 
                     <div class="space-y-4 pt-2">
-                        <!-- Direct WhatsApp Box (Personal Number Hidden) -->
+                        <!-- Direct WhatsApp Box -->
                         <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
                            target="_blank" 
                            class="flex items-center gap-4 p-4 rounded-2xl bg-cream-100 border border-cream-300 hover:border-gold-500 transition group">
@@ -1172,7 +1172,7 @@
                     <h4 class="font-bold text-lg text-gold-400"><i class="fa-solid fa-trash-can mr-2"></i>Manage & Delete Uploaded Samples</h4>
                     <p class="text-xs text-slate-300">Here you can see all your custom uploaded samples and delete any of them instantly whenever you want:</p>
                     <div id="admin-samples-list" class="space-y-3 max-h-60 overflow-y-auto pr-2">
-                        <!-- Populated dynamically via JS -->
+                        <!-- Populated dynamically via Firebase -->
                     </div>
                 </div>
             </div>
@@ -1295,66 +1295,111 @@
         </span>
     </a>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
+    <!-- JAVASCRIPT + FIREBASE CLOUD SYNC LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { 
+            getFirestore, 
+            collection, 
+            doc, 
+            setDoc, 
+            addDoc, 
+            deleteDoc, 
+            onSnapshot, 
+            increment 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyACZ4G7yrPs-vBTkPu0cLjvs66ZwF0DJrc",
+            authDomain: "educraft-5ed6f.firebaseapp.com",
+            databaseURL: "https://educraft-5ed6f-default-rtdb.firebaseio.com",
+            projectId: "educraft-5ed6f",
+            storageBucket: "educraft-5ed6f.firebasestorage.app",
+            messagingSenderId: "461531708040",
+            appId: "1:461531708040:web:306b105d1b8dbf23a67d3d"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'educraft-5ed6f';
+
         const PRIVATE_WA_NUMBER = "918960781789";
+
+        // Live Cloud Data Cache
+        let cloudSamples = [];
+        let cloudReviews = [];
+        let currentFilter = 'all';
 
         function showToast(msg) {
             const toast = document.getElementById('toast-box');
-            document.getElementById('toast-message').innerText = msg;
+            const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
+            toastMsg.innerText = msg;
             toast.classList.remove('hidden');
             setTimeout(() => {
                 toast.classList.add('hidden');
             }, 3500);
         }
 
-        // Mobile Navigation Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+        // Mobile Navigation & FAQ Setup
+        function setupUIEventListeners() {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
+            if (menuBtn && mobileMenu && menuIcon) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        menuIcon.classList.remove('fa-xmark');
+                        menuIcon.classList.add('fa-bars');
+                    } else {
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-xmark');
+                    }
+                });
+
+                document.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        menuIcon.classList.remove('fa-xmark');
+                        menuIcon.classList.add('fa-bars');
+                    });
+                });
             }
-        });
 
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            });
-        });
+            document.querySelectorAll('.faq-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
 
-        // Accordion FAQ Toggle
-        document.querySelectorAll('.faq-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('i');
+                    document.querySelectorAll('.faq-content').forEach(c => {
+                        if (c !== content) c.classList.add('hidden');
+                    });
+                    document.querySelectorAll('.faq-btn i').forEach(i => {
+                        if (i !== icon) i.classList.remove('rotate-180');
+                    });
 
-                document.querySelectorAll('.faq-content').forEach(c => {
-                    if (c !== content) c.classList.add('hidden');
+                    if (content) content.classList.toggle('hidden');
+                    if (icon) icon.classList.toggle('rotate-180');
                 });
-                document.querySelectorAll('.faq-btn i').forEach(i => {
-                    if (i !== icon) i.classList.remove('rotate-180');
-                });
-
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
             });
-        });
+        }
 
         // Smart Price Calculator (₹300 for 10 pages = ₹30/page + ₹10 per diagram/chart)
-        function calculateEstimate() {
-            const pages = Math.max(1, parseInt(document.getElementById('calc-pages').value) || 0);
-            const diagrams = Math.max(0, parseInt(document.getElementById('calc-diagrams').value) || 0);
-            const charts = Math.max(0, parseInt(document.getElementById('calc-charts').value) || 0);
+        window.calculateEstimate = function() {
+            const pagesEl = document.getElementById('calc-pages');
+            const diagramsEl = document.getElementById('calc-diagrams');
+            const chartsEl = document.getElementById('calc-charts');
+            if (!pagesEl || !diagramsEl || !chartsEl) return;
+
+            const pages = Math.max(1, parseInt(pagesEl.value) || 0);
+            const diagrams = Math.max(0, parseInt(diagramsEl.value) || 0);
+            const charts = Math.max(0, parseInt(chartsEl.value) || 0);
 
             document.getElementById('calc-pages-label').innerText = pages;
 
@@ -1375,9 +1420,9 @@
                 `• Estimated Total: ₹${totalPrice}\n\nPlease confirm my order!`
             );
             document.getElementById('calc-whatsapp-btn').href = `https://wa.me/${PRIVATE_WA_NUMBER}?text=${waMessage}`;
-        }
+        };
 
-        function handleFormSubmit(event) {
+        window.handleFormSubmit = function(event) {
             event.preventDefault();
             const name = document.getElementById('form-name').value;
             const contact = document.getElementById('form-phone').value;
@@ -1388,31 +1433,38 @@
             const text = `Hello EduCraft! I want assistance with my assignment/project.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Contact:* ${encodeURIComponent(contact)}%0A*Subject:* ${encodeURIComponent(subject)}%0A*Pages/Diagrams:* ${encodeURIComponent(pages)}%0A*Details:* ${encodeURIComponent(details)}`;
 
             window.open(`https://wa.me/${PRIVATE_WA_NUMBER}?text=${text}`, '_blank');
-        }
+        };
 
-        // Work Showcase Gallery Management (Fully dynamic & editable by Owner Admin)
-        let currentFilter = 'all';
-
+        // Work Showcase Gallery Management (Cloud-Synced via Firestore)
         function renderGallery() {
             const grid = document.getElementById('gallery-grid');
-            const customSamples = JSON.parse(localStorage.getItem('educraft_custom_samples') || '[]');
+            const countEl = document.getElementById('admin-sample-count');
+            if (countEl) countEl.innerText = cloudSamples.length;
+            if (!grid) return;
 
-            document.getElementById('admin-sample-count').innerText = customSamples.length;
-
-            if (customSamples.length === 0) {
+            if (cloudSamples.length === 0) {
                 grid.innerHTML = `
                     <div class="col-span-full py-16 text-center bg-white rounded-3xl border-2 border-dashed border-cream-300">
                         <i class="fa-solid fa-folder-open text-4xl text-slate-400 mb-3"></i>
                         <h4 class="font-bold text-navy-900 text-lg">No Work Samples Published Yet</h4>
-                        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Use the <strong class="text-gold-600">Owner Login</strong> at the footer (Password: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-800 font-mono">educraft123</code>) to upload and showcase your assignments!</p>
+                        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Use the <strong class="text-gold-600">Owner Login</strong> at the footer to upload and showcase your assignments live!</p>
                     </div>
                 `;
                 return;
             }
 
             const filtered = currentFilter === 'all' 
-                ? customSamples 
-                : customSamples.filter(item => item.category === currentFilter);
+                ? cloudSamples 
+                : cloudSamples.filter(item => item.category === currentFilter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-cream-300">
+                        <p class="text-sm text-slate-500 font-semibold">No samples found in "${currentFilter}" yet.</p>
+                    </div>
+                `;
+                return;
+            }
 
             grid.innerHTML = filtered.map(sample => `
                 <div class="bg-white rounded-2xl border border-cream-300 shadow-md overflow-hidden hover:shadow-xl transition flex flex-col justify-between">
@@ -1441,7 +1493,7 @@
             `).join('');
         }
 
-        function filterGallery(category, btn) {
+        window.filterGallery = function(category, btn) {
             currentFilter = category;
             document.querySelectorAll('.gallery-filter-btn').forEach(b => {
                 b.classList.remove('bg-navy-800', 'text-gold-400');
@@ -1450,9 +1502,9 @@
             btn.classList.remove('bg-white', 'text-navy-900');
             btn.classList.add('bg-navy-800', 'text-gold-400');
             renderGallery();
-        }
+        };
 
-        // Student Reviews & LocalStorage Persistence
+        // Student Reviews & Firestore Persistence
         const defaultReviews = [
             {
                 name: "Ananya S. (B.Tech CSE)",
@@ -1473,11 +1525,11 @@
 
         function renderReviews() {
             const grid = document.getElementById('reviews-grid');
-            const customReviews = JSON.parse(localStorage.getItem('educraft_custom_reviews') || '[]');
-            const allReviews = [...customReviews, ...defaultReviews];
+            if (!grid) return;
+            const allReviews = [...cloudReviews, ...defaultReviews];
 
             grid.innerHTML = allReviews.map(rev => {
-                const stars = Array(rev.rating).fill('<i class="fa-solid fa-star"></i>').join('');
+                const stars = Array(rev.rating || 5).fill('<i class="fa-solid fa-star"></i>').join('');
                 return `
                     <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm flex flex-col justify-between">
                         <div>
@@ -1486,7 +1538,7 @@
                         </div>
                         <div class="pt-3 border-t border-slate-100 flex items-center gap-2.5">
                             <div class="w-8 h-8 bg-navy-800 text-gold-400 rounded-full flex items-center justify-center font-bold text-xs">
-                                ${rev.name.charAt(0).toUpperCase()}
+                                ${(rev.name || 'S').charAt(0).toUpperCase()}
                             </div>
                             <span class="font-bold text-xs text-navy-900">${rev.name}</span>
                         </div>
@@ -1495,7 +1547,7 @@
             }).join('');
         }
 
-        function submitStudentReview(event) {
+        window.submitStudentReview = async function(event) {
             event.preventDefault();
             const name = document.getElementById('rev-name').value.trim();
             const rating = parseInt(document.getElementById('rev-rating').value);
@@ -1503,27 +1555,62 @@
 
             if (!name || !text) return;
 
-            const customReviews = JSON.parse(localStorage.getItem('educraft_custom_reviews') || '[]');
-            customReviews.unshift({ name, rating, text });
-            localStorage.setItem('educraft_custom_reviews', JSON.stringify(customReviews));
+            try {
+                const reviewsCol = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+                await addDoc(reviewsCol, {
+                    name,
+                    rating,
+                    text,
+                    createdAt: Date.now()
+                });
+                document.getElementById('review-form').reset();
+                showToast("Thank you! Your review is now live for everyone.");
+            } catch (err) {
+                console.error("Error saving review:", err);
+                showToast("Could not post review. Please check Firebase permissions.");
+            }
+        };
 
-            document.getElementById('review-form').reset();
-            renderReviews();
-            showToast("Thank you! Your review has been posted.");
+        // Image Compression Helper (keeps images lightweight for Firestore)
+        function compressImage(file, maxWidth = 850, quality = 0.72) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
         }
 
         // Owner Admin Modal & Upload/Delete Logic
-        function openOwnerModal() {
+        window.openOwnerModal = function() {
             document.getElementById('owner-login-error').classList.add('hidden');
             document.getElementById('owner-password-input').value = '';
             document.getElementById('owner-login-modal').classList.remove('hidden');
-        }
+        };
 
-        function closeOwnerModal() {
+        window.closeOwnerModal = function() {
             document.getElementById('owner-login-modal').classList.add('hidden');
-        }
+        };
 
-        function verifyOwnerPassword() {
+        window.verifyOwnerPassword = function() {
             const pwd = document.getElementById('owner-password-input').value;
             if (pwd === "Danitifa@111105") {
                 closeOwnerModal();
@@ -1535,66 +1622,65 @@
             } else {
                 document.getElementById('owner-login-error').classList.remove('hidden');
             }
-        }
+        };
 
-        function closeAdminPanel() {
+        window.closeAdminPanel = function() {
             document.getElementById('owner-admin-section').classList.add('hidden');
             showToast("Admin panel locked.");
-        }
+        };
 
-        function handleAdminSampleUpload(event) {
+        window.handleAdminSampleUpload = async function(event) {
             event.preventDefault();
             const title = document.getElementById('admin-sample-title').value.trim();
             const category = document.getElementById('admin-sample-category').value;
             const desc = document.getElementById('admin-sample-desc').value.trim();
             const fileInput = document.getElementById('admin-sample-file');
 
-            const saveSample = (imageDataUrl) => {
-                const customSamples = JSON.parse(localStorage.getItem('educraft_custom_samples') || '[]');
-                customSamples.unshift({
-                    id: Date.now(),
+            try {
+                let imageDataUrl = "";
+                if (fileInput.files && fileInput.files[0]) {
+                    showToast("Optimizing & uploading image...");
+                    imageDataUrl = await compressImage(fileInput.files[0]);
+                }
+
+                const samplesCol = collection(db, 'artifacts', appId, 'public', 'data', 'samples');
+                await addDoc(samplesCol, {
                     title,
                     category,
                     desc,
-                    image: imageDataUrl || ""
+                    image: imageDataUrl,
+                    createdAt: Date.now()
                 });
-                localStorage.setItem('educraft_custom_samples', JSON.stringify(customSamples));
+
                 event.target.reset();
-                renderGallery();
-                renderAdminSamplesList();
-                showToast("New work sample published successfully!");
-            };
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    saveSample(e.target.result);
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                saveSample("");
+                showToast("New work sample published live to cloud!");
+            } catch (err) {
+                console.error("Error uploading sample:", err);
+                showToast("Upload failed. Check Firebase Firestore rules.");
             }
-        }
+        };
 
-        function deleteAdminSample(id) {
-            let customSamples = JSON.parse(localStorage.getItem('educraft_custom_samples') || '[]');
-            customSamples = customSamples.filter(s => s.id !== id);
-            localStorage.setItem('educraft_custom_samples', JSON.stringify(customSamples));
-            renderGallery();
-            renderAdminSamplesList();
-            showToast("Work sample deleted.");
-        }
+        window.deleteAdminSample = async function(docId) {
+            try {
+                const sampleDoc = doc(db, 'artifacts', appId, 'public', 'data', 'samples', docId);
+                await deleteDoc(sampleDoc);
+                showToast("Work sample deleted from cloud.");
+            } catch (err) {
+                console.error("Error deleting sample:", err);
+                showToast("Could not delete sample.");
+            }
+        };
 
         function renderAdminSamplesList() {
             const container = document.getElementById('admin-samples-list');
-            const customSamples = JSON.parse(localStorage.getItem('educraft_custom_samples') || '[]');
+            if (!container) return;
 
-            if (customSamples.length === 0) {
+            if (cloudSamples.length === 0) {
                 container.innerHTML = `<p class="text-xs text-slate-400 italic">No samples uploaded yet.</p>`;
                 return;
             }
 
-            container.innerHTML = customSamples.map(sample => `
+            container.innerHTML = cloudSamples.map(sample => `
                 <div class="flex items-center justify-between bg-navy-800 p-3.5 rounded-xl border border-navy-600 gap-3">
                     <div class="flex items-center gap-3 truncate">
                         <div class="w-10 h-10 bg-navy-900 rounded-lg flex items-center justify-center flex-shrink-0 text-gold-400 overflow-hidden">
@@ -1605,22 +1691,80 @@
                             <span class="text-[10px] bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded">${sample.category}</span>
                         </div>
                     </div>
-                    <button onclick="deleteAdminSample(${sample.id})" class="bg-red-600/80 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex-shrink-0">
+                    <button onclick="deleteAdminSample('${sample.id}')" class="bg-red-600/80 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex-shrink-0">
                         <i class="fa-solid fa-trash mr-1"></i> Delete
                     </button>
                 </div>
             `).join('');
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            let visits = parseInt(localStorage.getItem('educraft_visit_counter') || '0') + 1;
-            localStorage.setItem('educraft_visit_counter', visits);
-            document.getElementById('admin-visit-count').innerText = visits;
+        // Initialize Firebase Cloud Sync
+        async function initCloudSync() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    try {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } catch (e) {
+                        await signInAnonymously(auth);
+                    }
+                } else {
+                    try {
+                        await signInAnonymously(auth);
+                    } catch (authErr) {
+                        console.warn("Anonymous auth not enabled in Firebase console. Enable it in Firebase Auth settings to sync online.", authErr);
+                        showToast("Tip: Enable Anonymous Auth in Firebase Console.");
+                        return;
+                    }
+                }
 
+                // Increment & Listen to Global Website Visits
+                const statsDoc = doc(db, 'artifacts', appId, 'public', 'data', 'stats', 'visits');
+                await setDoc(statsDoc, { count: increment(1) }, { merge: true });
+
+                onSnapshot(statsDoc, (snap) => {
+                    const countEl = document.getElementById('admin-visit-count');
+                    if (countEl && snap.exists()) {
+                        countEl.innerText = snap.data().count || 1;
+                    }
+                });
+
+                // Real-time Listener for Work Showcase Samples
+                const samplesCol = collection(db, 'artifacts', appId, 'public', 'data', 'samples');
+                onSnapshot(samplesCol, (snapshot) => {
+                    cloudSamples = snapshot.docs
+                        .map(d => ({ id: d.id, ...d.data() }))
+                        .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                    renderGallery();
+                    renderAdminSamplesList();
+                }, (err) => console.error("Samples listener error:", err));
+
+                // Real-time Listener for Student Reviews
+                const reviewsCol = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+                onSnapshot(reviewsCol, (snapshot) => {
+                    cloudReviews = snapshot.docs
+                        .map(d => ({ id: d.id, ...d.data() }))
+                        .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                    renderReviews();
+                }, (err) => console.error("Reviews listener error:", err));
+
+            } catch (error) {
+                console.error("Firebase sync note:", error);
+            }
+        }
+
+        function initApp() {
+            setupUIEventListeners();
             calculateEstimate();
             renderGallery();
             renderReviews();
-        });
+            initCloudSync();
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
     </script>
 </body>
 </html>

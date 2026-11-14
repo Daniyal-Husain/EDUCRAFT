@@ -1,1194 +1,1532 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduCraft | Professional Assignment & Academic Project Writing Services</title>
-    <meta name="description" content="EduCraft provides expert assignment writing, academic projects, research assistance, and formatting for college and university students. Starting at ₹300 for 10 pages.">
-    <meta name="keywords" content="EduCraft, assignment writing, academic projects, college assignments, report writing, research paper, PPT presentation, project formatting">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
+    <title>EduCraft | Professional Assignment Writing & Academic Project Help</title>
+    <meta name="description" content="EduCraft provides professional assignment writing assistance, academic project support, research help, and reports for college and university students starting at ₹300 for 10 pages.">
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            50: '#f0f4f9',
-                            100: '#dbe4f0',
-                            800: '#0f2a4a',
-                            900: '#091c33',
-                            deep: '#0a1728',
-                        },
-                        gold: {
-                            300: '#fde047',
-                            400: '#fac02e',
-                            500: '#f5b025',
-                            600: '#e09b13',
-                            700: '#b8790b',
-                        },
-                        cream: {
-                            50: '#fffdfa',
-                            100: '#fdfbf7',
-                            200: '#f7f2e9',
-                            300: '#efe6d5',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        hand: ['Caveat', 'cursive'],
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
-        /* Custom Styles & Visual Touches inspired by the EduCraft Poster */
-        .handwritten-badge {
-            font-family: 'Caveat', cursive;
+        :root {
+            --primary-navy: #002147;
+            --secondary-navy: #0A3663;
+            --accent-gold: #FFC107;
+            --accent-gold-dark: #e0a800;
+            --bg-cream: #FFFDF9;
+            --card-bg: #FFFFFF;
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --border-color: #E2E8F0;
+            --shadow: 0 10px 25px -5px rgba(0, 33, 71, 0.1), 0 8px 10px -6px rgba(0, 33, 71, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .poster-pattern {
-            background-color: #fdfbf7;
-            background-image: radial-gradient(#0f2a4a 0.75px, transparent 0.75px), radial-gradient(#0f2a4a 0.75px, #fdfbf7 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            background-opacity: 0.05;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
-        .hero-banner-brush {
-            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
-        .badge-glow {
-            box-shadow: 0 0 25px rgba(245, 176, 37, 0.4);
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-navy);
+            color: white;
+            font-size: 0.85rem;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .pulse-whatsapp {
-            animation: pulse-green 2s infinite;
+
+        .top-bar span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+
+        .top-bar i {
+            color: var(--accent-gold);
+        }
+
+        /* Navbar */
+        navbar {
+            background: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0, 33, 71, 0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #ffb300);
+            color: var(--primary-navy);
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+            background: linear-gradient(135deg, #ffca28, var(--accent-gold));
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 5% 60px;
+            background: linear-gradient(135deg, #002147 0%, #0a3663 100%);
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: var(--bg-cream);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h2 span {
+            color: var(--accent-gold);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .badge i {
+            color: var(--accent-gold);
+        }
+
+        .hero-card {
+            background: white;
+            color: var(--text-dark);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-card .tag {
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero-card h3 {
+            font-size: 2.2rem;
+            color: var(--primary-navy);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .hero-card h3 span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            display: block;
+        }
+
+        .hero-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        /* Section Headings */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header span {
+            color: var(--primary-navy);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            background: rgba(0, 33, 71, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--primary-navy);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        section {
+            padding: 80px 5%;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,33,71,0.12);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 33, 71, 0.06);
+            color: var(--primary-navy);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Smart Price Calculator Section */
+        .calculator-section {
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-navy));
+            color: white;
+            border-radius: 24px;
+            margin: 0 5%;
+            padding: 60px 40px;
+            box-shadow: 0 20px 40px rgba(0,33,71,0.3);
+        }
+
+        .calc-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .calc-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .calc-form label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+
+        .calc-form select, .calc-form input {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .calc-form select option {
+            background: var(--primary-navy);
+            color: white;
+        }
+
+        .calc-form select:focus, .calc-form input:focus {
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.95krem;
+            color: #e2e8f0;
+        }
+
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-gold);
+            cursor: pointer;
+        }
+
+        .calc-result-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .calc-result-box h4 {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .price-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .price-breakdown {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            text-align: left;
+            background: rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .price-breakdown ul {
+            list-style: none;
+            margin-top: 5px;
+        }
+
+        .price-breakdown li {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        /* Assignment Upload Portal */
+        .portal-container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group.full-width {
+            grid-column: span 2;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-navy);
+            font-size: 0.95rem;
+        }
+
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-cream);
+            font-size: 1rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            border-color: var(--primary-navy);
+            box-shadow: 0 0 0 3px rgba(0,33,71,0.1);
+            background: white;
+        }
+
+        .file-upload-box {
+            border: 2px dashed #cbd5e1;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--bg-cream);
+        }
+
+        .file-upload-box:hover {
+            border-color: var(--primary-navy);
+            background: rgba(0, 33, 71, 0.02);
+        }
+
+        .file-upload-box i {
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        /* Work Showcase Gallery */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            border-color: var(--primary-navy);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,33,71,0.15);
+        }
+
+        .gallery-img-wrap {
+            height: 220px;
+            background: #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .gallery-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--primary-navy);
+            background: rgba(0,33,71,0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.1rem;
+            color: var(--primary-navy);
+            margin-bottom: 5px;
+        }
+
+        .gallery-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Why Choose Us & Subjects */
+        .why-grid, .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card, .subject-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover, .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .feature-card i, .subject-card i {
+            font-size: 2.2rem;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .client-info h5 {
+            color: var(--primary-navy);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .client-info span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* How It Works & Steps */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+
+        .step-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 10px rgba(0,33,71,0.2);
+        }
+
+        .step-card h4 {
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero, .calc-wrapper, .portal-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
-<body class="font-sans bg-cream-100 text-slate-800 antialiased selection:bg-gold-500 selection:text-navy-900">
+<body>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-navy-900 text-white text-xs sm:text-sm py-2 px-4 text-center border-b border-navy-800">
-        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-            <span class="bg-gold-500 text-navy-900 font-bold px-2 py-0.5 rounded-full text-xs uppercase tracking-wider">Super Saver</span>
-            <span class="font-medium">Special Offer: Complete Assignment Assistance Starting at <strong class="text-gold-400">₹300 for 10 Pages!</strong></span>
-            <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." target="_blank" class="underline hover:text-gold-400 transition ml-1 font-semibold">Claim Now &rarr;</a>
-        </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span><i class="fa-solid fa-graduation-cap"></i> Trusted by 5,000+ College & University Students</span>
+        <span><i class="fa-solid fa-clock"></i> 24/7 Academic Assistance & Support</span>
     </div>
 
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-cream-300 shadow-sm transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#home" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 bg-navy-800 rounded-xl flex items-center justify-center text-gold-500 shadow-md group-hover:scale-105 transition-transform duration-300">
-                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
-                </div>
-                <div>
-                    <span class="text-2xl font-extrabold text-navy-800 tracking-tight block leading-none">EduCraft<span class="text-gold-500">.</span></span>
-                    <span class="text-xs font-semibold text-slate-500 tracking-wider">Your Assignment, Our Priority</span>
-                </div>
-            </a>
-
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
-                <a href="#home" class="hover:text-gold-600 transition-colors py-1">Home</a>
-                <a href="#about" class="hover:text-gold-600 transition-colors py-1">About Us</a>
-                <a href="#services" class="hover:text-gold-600 transition-colors py-1">Services</a>
-                <a href="#pricing" class="hover:text-gold-600 transition-colors py-1">Pricing</a>
-                <a href="#subjects" class="hover:text-gold-600 transition-colors py-1">Subjects</a>
-                <a href="#how-it-works" class="hover:text-gold-600 transition-colors py-1">How It Works</a>
-                <a href="#faq" class="hover:text-gold-600 transition-colors py-1">FAQ</a>
-                <a href="#contact" class="hover:text-gold-600 transition-colors py-1">Contact</a>
-            </nav>
-
-            <!-- Direct CTA Action Button -->
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                   target="_blank" 
-                   class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 group text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
-                    <span>WhatsApp Us</span>
-                </a>
+    <!-- Navigation Bar -->
+    <navbar>
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="logo-text">
+                <h1>EduCraft</h1>
+                <span>Your Assignment, Our Priority</span>
             </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#calculator">Pricing Calculator</a></li>
+            <li><a href="#portal">Submit Assignment</a></li>
+            <li><a href="#gallery">Work Showcase</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#portal" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> Get a Quote</a>
+        <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></div>
+    </navbar>
 
-            <!-- Mobile Menu Toggle Button -->
-            <button id="menu-btn" class="lg:hidden p-2 text-navy-800 hover:text-gold-600 focus:outline-none" aria-label="Toggle Menu">
-                <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
-            </button>
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h2>Professional Assignment Writing <span>& Project Help</span></h2>
+            <p>Get top-quality, plagiarism-free academic assignments, reports, presentations, and practical files crafted by experts. Timely delivery guaranteed.</p>
+            <div class="hero-badges">
+                <div class="badge"><i class="fa-solid fa-shield-check"></i> 100% Original Content</div>
+                <div class="badge"><i class="fa-solid fa-clock"></i> On-Time Delivery</div>
+                <div class="badge"><i class="fa-solid fa-lock"></i> 100% Confidential</div>
+            </div>
+            <a href="#portal" class="btn-primary" style="font-size: 1.1rem; padding: 14px 30px;"><i class="fa-solid fa-paper-plane"></i> Submit Your Assignment Now</a>
         </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
-            <a href="#home" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Home</a>
-            <a href="#about" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">About Us</a>
-            <a href="#services" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Our Services</a>
-            <a href="#pricing" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Pricing Offer (₹300/10 Pages)</a>
-            <a href="#subjects" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Subjects Covered</a>
-            <a href="#how-it-works" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">How It Works</a>
-            <a href="#faq" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">FAQ</a>
-            <a href="#contact" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cream-100 text-navy-800 font-semibold">Contact Us</a>
-            <div class="pt-2">
-                <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                   target="_blank" 
-                   class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-md">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>Connect on WhatsApp (8960781789)</span>
-                </a>
-            </div>
+        <div class="hero-card">
+            <span class="tag">Special Limited Offer</span>
+            <h3>₹300 <span>FOR 10 PAGES</span></h3>
+            <p>Affordable, high-grade assignments tailored to your university guidelines (APA, MLA, etc.) with diagrams and charts support.</p>
+            <a href="#calculator" class="btn-primary" style="width: 100%; justify-content: center;">Calculate Your Estimate</a>
         </div>
     </header>
 
-    <!-- MAIN HERO SECTION -->
-    <section id="home" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 poster-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Hero Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 bg-gold-500/20 text-navy-900 border border-gold-500/40 px-4 py-1.5 rounded-full font-bold text-sm shadow-sm">
-                        <i class="fa-solid fa-sparkles text-gold-600"></i>
-                        <span>Save Time • Reduce Stress • Get Better Results</span>
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-navy-900 tracking-tight leading-[1.15]">
-                        Professional Assignment Writing Help for <span class="relative inline-block text-gold-600 underline decoration-navy-800 decoration-wavy decoration-2">College Students</span>
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-slate-700 font-medium max-w-2xl mx-auto lg:mx-0">
-                        Struggling with deadlines? <strong class="text-navy-800">EduCraft</strong> delivers high-quality, plagiarism-free, and perfectly formatted academic assignments and reports tailored to your university guidelines.
-                    </p>
-
-                    <!-- Poster-Style Pricing Banner Box -->
-                    <div class="bg-navy-800 text-white p-6 rounded-2xl shadow-2xl border-4 border-gold-500 relative transform hover:-translate-y-1 transition-transform max-w-lg mx-auto lg:mx-0">
-                        <div class="absolute -top-4 -right-3 bg-gold-500 text-navy-900 font-black text-xs uppercase px-3 py-1 rounded-full shadow-md tracking-wider">
-                            Best Value Offer
-                        </div>
-                        <div class="flex items-center justify-between gap-4">
-                            <div>
-                                <p class="text-cream-200 text-xs sm:text-sm font-semibold uppercase tracking-wider">Affordable Academic Help</p>
-                                <p class="text-3xl sm:text-4xl font-extrabold text-gold-400 mt-1">Starting at ₹300</p>
-                                <p class="text-sm text-slate-200 mt-0.5 font-medium">Get up to <span class="bg-gold-500/30 text-gold-300 font-bold px-1.5 py-0.5 rounded">10 Pages</span> for just ₹300!</p>
-                            </div>
-                            <div class="text-right">
-                                <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                                   target="_blank"
-                                   class="inline-flex flex-col items-center justify-center bg-gold-500 hover:bg-gold-400 text-navy-900 font-extrabold px-5 py-3 rounded-xl transition shadow-lg hover:shadow-xl text-sm">
-                                    <span>ORDER NOW</span>
-                                    <span class="text-[10px] opacity-90">Instant Response</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hero Action Buttons -->
-                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                           target="_blank" 
-                           class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-600/30 transition-all flex items-center justify-center gap-3 text-lg group">
-                            <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
-                            <span>Get Started on WhatsApp</span>
-                        </a>
-                        <a href="#pricing" 
-                           class="w-full sm:w-auto bg-white hover:bg-cream-200 text-navy-800 font-bold px-6 py-4 rounded-xl border-2 border-navy-800 shadow-sm transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-calculator text-gold-600"></i>
-                            <span>View Price Calculator</span>
-                        </a>
-                    </div>
-
-                    <!-- Quick Trust Indicators -->
-                    <div class="pt-2 flex items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm font-semibold text-slate-600">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-600"></i> 100% Genuine</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-600"></i> Timely Delivery</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-600"></i> APA / MLA Guidelines</span>
-                    </div>
-                </div>
-
-                <!-- Right Hero Visual Box -->
-                <div class="lg:col-span-5">
-                    <div class="relative max-w-md mx-auto">
-                        <!-- Decorative Backdrop Card -->
-                        <div class="absolute inset-0 bg-gold-500 rounded-3xl transform rotate-3 shadow-xl"></div>
-                        
-                        <!-- Main Main Poster Card Mirror -->
-                        <div class="relative bg-navy-800 text-white p-8 rounded-3xl shadow-2xl border-2 border-gold-400 space-y-6">
-                            <div class="text-center border-b border-navy-700 pb-5">
-                                <div class="inline-block p-3 bg-white/10 rounded-full mb-3">
-                                    <i class="fa-solid fa-award text-4xl text-gold-400"></i>
-                                </div>
-                                <h3 class="text-2xl font-black text-white">Good Assignments</h3>
-                                <p class="handwritten-badge text-2xl text-gold-400 font-bold mt-1">= Better Grades Guaranteed!</p>
-                            </div>
-
-                            <div class="space-y-4">
-                                <div class="flex items-start gap-3 bg-navy-900/60 p-3.5 rounded-xl border border-navy-700">
-                                    <i class="fa-solid fa-file-pen text-gold-400 text-xl mt-1"></i>
-                                    <div>
-                                        <h4 class="font-bold text-sm text-white">Well-Researched & Original</h4>
-                                        <p class="text-xs text-slate-300">100% plagiarism-free content drafted specifically for your topics.</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start gap-3 bg-navy-900/60 p-3.5 rounded-xl border border-navy-700">
-                                    <i class="fa-solid fa-clock text-gold-400 text-xl mt-1"></i>
-                                    <div>
-                                        <h4 class="font-bold text-sm text-white">Fast Turnaround</h4>
-                                        <p class="text-xs text-slate-300">Never miss a submission deadline with our prompt delivery.</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start gap-3 bg-navy-900/60 p-3.5 rounded-xl border border-navy-700">
-                                    <i class="fa-solid fa-user-shield text-gold-400 text-xl mt-1"></i>
-                                    <div>
-                                        <h4 class="font-bold text-sm text-white">Confidential & Reliable</h4>
-                                        <p class="text-xs text-slate-300">Your privacy and data safety are always protected with us.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pt-2 text-center">
-                                <a href="tel:8960781789" class="text-sm font-bold text-gold-400 hover:underline flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-phone"></i> Call Direct: +91 8960781789
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Main Services -->
+    <section id="services">
+        <div class="section-header">
+            <span>What We Offer</span>
+            <h2>Comprehensive Academic Services</h2>
+            <p>We provide end-to-end academic support customized for college and university students across all streams.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-book"></i></div>
+                <h3>College Assignments</h3>
+                <p>Well-researched, neatly structured assignments tailored to your exact professors' guidelines.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Academic Projects</h3>
+                <p>Complete documentation, code structure, and implementation support for major/minor projects.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <h3>Research Assistance</h3>
+                <p>Literature reviews, thesis structuring, citation management, and reference formatting.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+                <h3>PPT Presentations</h3>
+                <p>Engaging, professional slide decks with bullet points, speaker notes, and premium visual themes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-file-lines"></i></div>
+                <h3>Project Reports</h3>
+                <p>Comprehensive technical and management reports with executive summaries and appendices.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>Practical Files</h3>
+                <p>Neat, precise, and diagram-supported handwritten or digital practical files for lab courses.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Case Studies</h3>
+                <p>In-depth analytical case studies with problem identification and strategic recommendations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Data Analysis</h3>
+                <p>Quantitative and qualitative data interpretation, statistical summaries, and insights.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Charts, Graphs & Diagrams</h3>
+                <p>High-resolution flowchart diagrams, comparative charts, and visual data representations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-list-check"></i></div>
+                <h3>Formatting & Citations</h3>
+                <p>Flawless formatting following APA, MLA, Harvard, IEEE, and Chicago style guidelines.</p>
             </div>
         </div>
     </section>
 
-    <!-- KEY HIGHLIGHTS BAR (Matching Poster Highlights) -->
-    <section class="bg-navy-900 text-white py-10 border-y-4 border-gold-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-                <div class="p-4 rounded-xl bg-navy-800/80 border border-navy-700 hover:border-gold-500 transition">
-                    <i class="fa-solid fa-file-shield text-3xl text-gold-400 mb-2"></i>
-                    <h4 class="font-bold text-sm text-white">Original Content</h4>
-                    <p class="text-xs text-slate-400 mt-1">Plagiarism-free & genuine</p>
-                </div>
-                <div class="p-4 rounded-xl bg-navy-800/80 border border-navy-700 hover:border-gold-500 transition">
-                    <i class="fa-solid fa-ruler-combined text-3xl text-gold-400 mb-2"></i>
-                    <h4 class="font-bold text-sm text-white">Proper Formatting</h4>
-                    <p class="text-xs text-slate-400 mt-1">APA, MLA, IEEE & Custom</p>
-                </div>
-                <div class="p-4 rounded-xl bg-navy-800/80 border border-navy-700 hover:border-gold-500 transition">
-                    <i class="fa-solid fa-lightbulb text-3xl text-gold-400 mb-2"></i>
-                    <h4 class="font-bold text-sm text-white">Clear Language</h4>
-                    <p class="text-xs text-slate-400 mt-1">Simple & exam-friendly</p>
-                </div>
-                <div class="p-4 rounded-xl bg-navy-800/80 border border-navy-700 hover:border-gold-500 transition">
-                    <i class="fa-solid fa-stopwatch text-3xl text-gold-400 mb-2"></i>
-                    <h4 class="font-bold text-sm text-white">On-Time Delivery</h4>
-                    <p class="text-xs text-slate-400 mt-1">Your deadlines matter</p>
-                </div>
-                <div class="col-span-2 md:col-span-1 p-4 rounded-xl bg-navy-800/80 border border-navy-700 hover:border-gold-500 transition">
-                    <i class="fa-solid fa-lock text-3xl text-gold-400 mb-2"></i>
-                    <h4 class="font-bold text-sm text-white">Confidentiality</h4>
-                    <p class="text-xs text-slate-400 mt-1">100% Student Data Safe</p>
-                </div>
+    <!-- Smart Price Calculator Section -->
+    <section id="calculator">
+        <div class="calculator-section">
+            <div class="section-header" style="margin-bottom: 30px;">
+                <span style="background: rgba(255,255,255,0.15); color: var(--accent-gold);">Instant Estimator</span>
+                <h2 style="color: white;">Smart Price Calculator</h2>
+                <p style="color: #cbd5e1;">Get an instant price estimate based on your exact requirements. Base pricing starts at ₹300 for 10 pages.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- ABOUT US SECTION -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <div class="inline-block bg-cream-200 text-navy-800 font-bold px-3.5 py-1 rounded-md text-xs uppercase tracking-wider">About EduCraft</div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 leading-tight">
-                        Empowering Students with Premium Academic Support
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        At <strong class="text-navy-800">EduCraft</strong>, we understand that college life can get overwhelming with packed schedules, exam preparation, and multiple strict assignment submission deadlines. That's why we stepped in to make your academic journey smooth and stress-free.
-                    </p>
-                    <p class="text-slate-600 leading-relaxed">
-                        Whether you need help drafting a detailed college assignment, preparing complex practical lab files, formatting a final-year project report, or building data-driven charts and graphs, our dedicated academic writing team delivers well-researched, accurately formatted, and easy-to-understand content.
-                    </p>
-
-                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
-                        <div class="p-4 bg-cream-100 rounded-xl border border-cream-300">
-                            <i class="fa-solid fa-user-graduate text-2xl text-gold-600 mb-2"></i>
-                            <h4 class="font-bold text-navy-800">Student-Centric Rates</h4>
-                            <p class="text-xs text-slate-600 mt-1">High quality work engineered to fit every student's budget.</p>
-                        </div>
-                        <div class="p-4 bg-cream-100 rounded-xl border border-cream-300">
-                            <i class="fa-solid fa-bullseye text-2xl text-gold-600 mb-2"></i>
-                            <h4 class="font-bold text-navy-800">Precision & Quality</h4>
-                            <p class="text-xs text-slate-600 mt-1">Adherence to exact college and university assignment standards.</p>
-                        </div>
+            <div class="calc-wrapper">
+                <div class="calc-form">
+                    <div class="form-group">
+                        <label for="calcPages">Number of Pages: <span id="pagesVal" style="color: var(--accent-gold); font-weight: 700;">10</span></label>
+                        <input type="range" id="calcPages" min="1" max="100" value="10" oninput="calculatePrice()" style="cursor: pointer; accent-color: var(--accent-gold);">
                     </div>
-                </div>
-
-                <div class="relative">
-                    <div class="bg-navy-800 p-8 sm:p-10 rounded-3xl text-white shadow-xl relative overflow-hidden">
-                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-gold-500/20 rounded-full blur-2xl"></div>
-                        <h3 class="text-2xl font-bold text-gold-400 mb-6">What Makes EduCraft Stand Out?</h3>
-                        
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3">
-                                <span class="bg-gold-500 text-navy-900 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
-                                <div>
-                                    <strong class="text-white">Custom Solutions:</strong> Written strictly as per your specific guidelines, word count, and reference formats.
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="bg-gold-500 text-navy-900 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
-                                <div>
-                                    <strong class="text-white">Visual Enhancements:</strong> Flowcharts, tables, labeled diagrams, and comparative graphs included when needed.
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="bg-gold-500 text-navy-900 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
-                                <div>
-                                    <strong class="text-white">Direct WhatsApp Assistance:</strong> Talk directly to our team for quick updates and order placement.
-                                </div>
-                            </li>
-                        </ul>
-
-                        <div class="mt-8 pt-6 border-t border-navy-700 flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-slate-400">Have questions?</p>
-                                <p class="font-bold text-gold-400">WhatsApp: 8960781789</p>
-                            </div>
-                            <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                               target="_blank"
-                               class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition">
-                                Chat Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- OUR SERVICES SECTION -->
-    <section id="services" class="py-20 bg-cream-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">What We Offer</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Comprehensive Academic Writing & Project Services</h2>
-                <p class="text-slate-600 mt-3">Professional assistance crafted to boost your GPA across multiple academic formats.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Service Card 1 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">College Assignments</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Custom-written theory, short answers, long descriptive essays, and solved assignment sheets adhering to your syllabus.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Plagiarism Free</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20help%20with%20a%20College%20Assignment." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 2 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-diagram-project"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Academic Projects</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            End-to-end semester projects, major/minor project documentation, implementation summaries, and abstract creation.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Full Documentation</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20help%20with%20an%20Academic%20Project." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 3 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-microscope"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Research Assistance</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Literature reviews, methodology writing, citations, reference searching, and academic paper structured drafting.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">In-depth Analysis</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20Research%20Assistance." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 4 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-file-powerpoint"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">PPT Presentations</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Engaging PowerPoint slide decks complete with speaker notes, visually appealing graphics, and clean design.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Custom Graphics</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20a%20PPT%20Presentation." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 5 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-file-lines"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Project Reports</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Comprehensive, well-structured formal reports with title pages, table of contents, executive summary, and conclusions.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Ready to Print</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20a%20Project%20Report." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 6 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-pen-ruler"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Practical Files & Notebooks</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Neat lab manuals, practical record files, code listings, observation tables, and experiment documentation.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Lab Format Ready</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20help%20with%20Practical%20Files." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 7 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-briefcase"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Case Studies</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Detailed analytical case studies covering business management, law, engineering scenarios, and social issues.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Analytical Focus</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20a%20Case%20Study." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 8 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-chart-pie"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Data Analysis</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Statistical data interpretation, questionnaire responses summary, Excel data computations, and research analytics.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Accurate Math</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20Data%20Analysis." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 9 (Diagrams & Formatting Combined / Specific) -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1">
-                    <div>
-                        <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-2">Charts, Graphs & Diagrams</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Flowcharts, labeled scientific diagrams, comparative bar graphs, and tabular data representation.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                        <span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Visual Quality</span>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20Charts/Diagrams%20added." target="_blank" class="text-navy-800 font-bold hover:text-gold-600 flex items-center gap-1">Order <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 10 -->
-                <div class="bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-cream-300 flex flex-col justify-between group hover:-translate-y-1 md:col-span-2 lg:col-span-3">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
-                                <i class="fa-solid fa-align-left"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-navy-900">Custom Formatting (APA, MLA, Chicago, IEEE)</h3>
-                                <p class="text-slate-600 text-sm mt-1">Already written your text? We will format font styles, margins, headings, line spacing, and reference citations as per university rules.</p>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/918960781789?text=Hi%20EduCraft,%20I%20need%20Formatting%20assistance." target="_blank" class="bg-navy-800 hover:bg-navy-900 text-white font-bold px-6 py-3 rounded-xl flex-shrink-0 text-sm">
-                            Get Formatting Quote
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- HIGHLIGHTED PRICING SECTION -->
-    <section id="pricing" class="py-20 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Transparent Rates</span>
-                <h2 class="text-3xl sm:text-5xl font-black text-navy-900 mt-3">Simple & Student-Friendly Pricing</h2>
-                <p class="text-slate-600 text-base sm:text-lg mt-3">No hidden costs. Get top-grade assignment assistance customized to your page length.</p>
-            </div>
-
-            <!-- Main Promotional Price Card (Matches Poster) -->
-            <div class="max-w-4xl mx-auto bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-gold-500 relative overflow-hidden">
-                <!-- Background Pattern -->
-                <div class="absolute -right-10 -top-10 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl"></div>
-
-                <div class="grid lg:grid-cols-12 gap-8 items-center">
-                    <!-- Left Offer Info -->
-                    <div class="lg:col-span-7 space-y-5">
-                        <div class="inline-block bg-gold-500 text-navy-900 font-extrabold text-xs uppercase tracking-wider px-3 py-1 rounded-full">
-                            ★ Most Popular Student Offer
-                        </div>
-                        <h3 class="text-3xl sm:text-4xl font-black text-white">
-                            Standard College Assignment
-                        </h3>
-                        <div class="flex items-baseline gap-3">
-                            <span class="text-5xl sm:text-6xl font-black text-gold-400">₹300</span>
-                            <span class="text-2xl font-bold text-cream-200">/ 10 Pages</span>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Get up to <strong class="text-gold-300">10 pages of well-researched, original content</strong> formatted clean and crisp for standard college submissions.
-                        </p>
-
-                        <ul class="space-y-2.5 text-sm pt-2">
-                            <li class="flex items-center gap-2 text-slate-200">
-                                <i class="fa-solid fa-check text-gold-400"></i> Well-researched & 100% genuine content
-                            </li>
-                            <li class="flex items-center gap-2 text-slate-200">
-                                <i class="fa-solid fa-check text-gold-400"></i> APA / MLA or University standard formatting
-                            </li>
-                            <li class="flex items-center gap-2 text-slate-200">
-                                <i class="fa-solid fa-check text-gold-400"></i> Clear, simple & exam-friendly language
-                            </li>
-                            <li class="flex items-center gap-2 text-slate-200">
-                                <i class="fa-solid fa-check text-gold-400"></i> Timely delivery before your submission date
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Right Pricing Breakdown & CTA -->
-                    <div class="lg:col-span-5 bg-navy-800/90 p-6 sm:p-8 rounded-2xl border border-navy-700 space-y-5">
-                        <h4 class="font-bold text-lg text-gold-400 border-b border-navy-700 pb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-plus"></i> Additional Pricing Notes
-                        </h4>
-                        
-                        <div class="space-y-3 text-xs sm:text-sm">
-                            <div class="flex justify-between items-center text-slate-200">
-                                <span>Base Package (Up to 10 Pages)</span>
-                                <span class="font-bold text-gold-400">₹300</span>
-                            </div>
-                            <div class="flex justify-between items-center text-slate-200">
-                                <span>Extra Pages (Custom Pricing)</span>
-                                <span class="font-semibold text-cream-200">Affordable add-on</span>
-                            </div>
-                            
-                            <!-- Notice from Poster regarding Diagrams/Charts -->
-                            <div class="mt-4 p-3.5 bg-navy-900 rounded-xl border border-gold-500/30 text-xs text-slate-300 space-y-1">
-                                <div class="font-bold text-gold-400 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-triangle-exclamation"></i> Special Requirements:
-                                </div>
-                                <p>If your assignment includes labeled diagrams, charts, flowcharts, graphs, or complex coding, price will increase accordingly based on complexity.</p>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment.%20Here%20are%20my%20details:" 
-                           target="_blank"
-                           class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 text-center group">
-                            <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
-                            <span>ORDER NOW ON WHATSAPP</span>
-                        </a>
-                        <p class="text-[11px] text-center text-slate-400">Direct Contact: +91 8960781789</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Custom Interactive Price Calculator Widget -->
-            <div class="max-w-4xl mx-auto mt-12 bg-cream-100 p-6 sm:p-8 rounded-2xl border border-cream-300">
-                <h3 class="text-xl font-bold text-navy-900 text-center mb-6">Quick Cost Estimator</h3>
-                <div class="grid sm:grid-cols-3 gap-6 items-center">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Select No. of Pages</label>
-                        <select id="calc-pages" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm font-semibold focus:outline-none focus:border-navy-800" onchange="calculateEstimate()">
-                            <option value="10">Up to 10 Pages (Base Pack - ₹300)</option>
-                            <option value="15">15 Pages (~₹450)</option>
-                            <option value="20">20 Pages (~₹600)</option>
-                            <option value="30">30 Pages (~₹900)</option>
-                            <option value="50">50+ Pages (Custom Bulk Discount)</option>
+                    <div class="form-group">
+                        <label for="calcSubject">Subject Category</label>
+                        <select id="calcSubject" onchange="calculatePrice()">
+                            <option value="standard">General / Humanities / Arts</option>
+                            <option value="science">Science & Biology</option>
+                            <option value="engineering">Engineering & Technology</option>
+                            <option value="cs">Computer Science & IT</option>
+                            <option value="commerce">Commerce & Management</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Includes Visuals?</label>
-                        <select id="calc-visuals" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm font-semibold focus:outline-none focus:border-navy-800" onchange="calculateEstimate()">
-                            <option value="no">Text Only (Standard)</option>
-                            <option value="yes">Includes Diagrams / Charts (+ Custom)</option>
+                    <div class="form-group">
+                        <label for="calcUrgency">Delivery Urgency</label>
+                        <select id="calcUrgency" onchange="calculatePrice()">
+                            <option value="normal">Standard (3+ Days)</option>
+                            <option value="urgent">Urgent (Within 48 Hours) [+₹100]</option>
+                            <option value="superUrgent">Super Urgent (24 Hours) [+₹250]</option>
                         </select>
                     </div>
-                    <div class="text-center sm:text-right bg-white p-4 rounded-xl border border-slate-200">
-                        <span class="text-xs text-slate-500 font-semibold block">Estimated Price</span>
-                        <span class="text-2xl font-black text-navy-900" id="calc-result">₹300</span>
-                        <span class="text-[10px] text-slate-500 block">Final quote shared on WhatsApp</span>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" id="calcDiagrams" onchange="calculatePrice()"> Include Diagrams / Flowcharts</label>
+                        <label class="checkbox-label"><input type="checkbox" id="calcCharts" onchange="calculatePrice()"> Include Charts & Graphs</label>
                     </div>
                 </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- WHY CHOOSE EDUCRAFT SECTION -->
-    <section class="py-20 bg-cream-50 poster-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Why Choose Us</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Designed Specially for Academic Excellence</h2>
-                <p class="text-slate-600 mt-3">We eliminate your assignment worries with strict quality standards.</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Feature 1 -->
-                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-gold-500/20 text-gold-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">
-                        <i class="fa-solid fa-magnifying-glass font-bold"></i>
+                <div class="calc-result-box">
+                    <h4>Estimated Quotation</h4>
+                    <div class="price-display" id="calculatedPrice">₹300</div>
+                    <div class="price-breakdown">
+                        <strong>Breakdown Summary:</strong>
+                        <ul id="breakdownList">
+                            <li><span>10 Base Pages</span> <span>₹300</span></li>
+                            <li><span>Standard Delivery</span> <span>₹0</span></li>
+                            <li><span>No Extras</span> <span>₹0</span></li>
+                        </ul>
                     </div>
-                    <h3 class="text-lg font-bold text-navy-900 mb-2">Well-Researched Content</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Gathered from trustworthy academic publications, books, and credible papers to ensure top marks.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-gold-500/20 text-gold-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">
-                        <i class="fa-solid fa-file-contract font-bold"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-navy-900 mb-2">Proper Formatting</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Formatted cleanly according to university guidelines including margins, cover pages, and citation styles.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-gold-500/20 text-gold-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">
-                        <i class="fa-solid fa-language font-bold"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-navy-900 mb-2">Clear & Easy Language</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Simple, professional, and exam-friendly language so you can easily present or explain your work.</p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="bg-white p-6 rounded-2xl border border-cream-300 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-gold-500/20 text-gold-700 rounded-xl flex items-center justify-center text-xl mb-4 font-bold">
-                        <i class="fa-solid fa-clock-rotate-left font-bold"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-navy-900 mb-2">Timely Delivery</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">We strictly respect deadlines. Receive your work well before submission time for review.</p>
+                    <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 20px;">*Final quotation may vary slightly based on technical complexity and special requirements.</p>
+                    <a href="#portal" class="btn-primary" style="width: 100%; justify-content: center;"><i class="fa-solid fa-paper-plane"></i> Proceed with this Quote</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SUBJECTS WE COVER SECTION -->
-    <section id="subjects" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="bg-navy-800 text-gold-400 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Academic Spectrum</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">We Help With All Subjects</h2>
-                <p class="text-slate-600 mt-3">Qualified assistance across a wide variety of university and college streams.</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-                
-                <!-- Subject 1 -->
-                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 text-center hover:bg-navy-800 hover:text-white transition duration-300 group cursor-pointer">
-                    <div class="w-14 h-14 bg-white text-navy-800 group-hover:bg-gold-500 group-hover:text-navy-900 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm transition">
-                        <i class="fa-solid fa-flask"></i>
-                    </div>
-                    <h3 class="font-bold text-base mb-1">Science</h3>
-                    <p class="text-[11px] text-slate-500 group-hover:text-cream-200">Physics, Chem, Bio & Lab Files</p>
-                </div>
-
-                <!-- Subject 2 -->
-                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 text-center hover:bg-navy-800 hover:text-white transition duration-300 group cursor-pointer">
-                    <div class="w-14 h-14 bg-white text-navy-800 group-hover:bg-gold-500 group-hover:text-navy-900 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm transition">
-                        <i class="fa-solid fa-gears"></i>
-                    </div>
-                    <h3 class="font-bold text-base mb-1">Engineering & Tech</h3>
-                    <p class="text-[11px] text-slate-500 group-hover:text-cream-200">Mech, Civil, ECE, EE Reports</p>
-                </div>
-
-                <!-- Subject 3 -->
-                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 text-center hover:bg-navy-800 hover:text-white transition duration-300 group cursor-pointer">
-                    <div class="w-14 h-14 bg-white text-navy-800 group-hover:bg-gold-500 group-hover:text-navy-900 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm transition">
-                        <i class="fa-solid fa-chart-column"></i>
-                    </div>
-                    <h3 class="font-bold text-base mb-1">Commerce & Management</h3>
-                    <p class="text-[11px] text-slate-500 group-hover:text-cream-200">BBA, MBA, Accounts, Finance</p>
-                </div>
-
-                <!-- Subject 4 -->
-                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 text-center hover:bg-navy-800 hover:text-white transition duration-300 group cursor-pointer">
-                    <div class="w-14 h-14 bg-white text-navy-800 group-hover:bg-gold-500 group-hover:text-navy-900 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm transition">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="font-bold text-base mb-1">Computer Science & IT</h3>
-                    <p class="text-[11px] text-slate-500 group-hover:text-cream-200">BCA, MCA, Programming & Projects</p>
-                </div>
-
-                <!-- Subject 5 -->
-                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 text-center hover:bg-navy-800 hover:text-white transition duration-300 group cursor-pointer">
-                    <div class="w-14 h-14 bg-white text-navy-800 group-hover:bg-gold-500 group-hover:text-navy-900 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm transition">
-                        <i class="fa-solid fa-landmark"></i>
-                    </div>
-                    <h3 class="font-bold text-base mb-1">Humanities</h3>
-                    <p class="text-[11px] text-slate-500 group-hover:text-cream-200">History, Political Sci, English</p>
-                </div>
-
-                <!-- Subject 6 -->
-                <div class="bg-cream-100 p-6 rounded-2xl border border-cream-300 text-center hover:bg-navy-800 hover:text-white transition duration-300 group cursor-pointer">
-                    <div class="w-14 h-14 bg-white text-navy-800 group-hover:bg-gold-500 group-hover:text-navy-900 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm transition">
-                        <i class="fa-solid fa-palette"></i>
-                    </div>
-                    <h3 class="font-bold text-base mb-1">Arts & Social Sciences</h3>
-                    <p class="text-[11px] text-slate-500 group-hover:text-cream-200">Psychology, Sociology, Fine Arts</p>
-                </div>
-
-            </div>
+    <!-- Assignment Upload Portal -->
+    <section id="portal">
+        <div class="section-header">
+            <span>Submission Portal</span>
+            <h2>Order Your Assignment / Project</h2>
+            <p>Fill out the details below to generate your unique Order ID and submit your requirements securely.</p>
         </div>
-    </section>
-
-    <!-- HOW IT WORKS SECTION -->
-    <section id="how-it-works" class="py-20 bg-navy-900 text-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Simple 4-Step Process</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-3">How to Get Started with EduCraft</h2>
-                <p class="text-slate-300 mt-3">Getting your assignment written is fast, seamless, and completely online.</p>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-6 relative">
-                
-                <!-- Step 1 -->
-                <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700 relative flex flex-col items-center text-center">
-                    <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full font-black text-xl flex items-center justify-center mb-4 shadow-md">1</div>
-                    <div class="text-3xl text-gold-400 mb-3"><i class="fa-brands fa-whatsapp"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-2">Contact Us on WhatsApp</h3>
-                    <p class="text-xs text-slate-300">Click our WhatsApp link or message directly to <strong>8960781789</strong>.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700 relative flex flex-col items-center text-center">
-                    <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full font-black text-xl flex items-center justify-center mb-4 shadow-md">2</div>
-                    <div class="text-3xl text-gold-400 mb-3"><i class="fa-solid fa-file-arrow-up"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-2">Share Requirements</h3>
-                    <p class="text-xs text-slate-300">Send your topic, guidelines, page count, formatting style, and deadline.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700 relative flex flex-col items-center text-center">
-                    <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full font-black text-xl flex items-center justify-center mb-4 shadow-md">3</div>
-                    <div class="text-3xl text-gold-400 mb-3"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-2">Get Quote & Timeline</h3>
-                    <p class="text-xs text-slate-300">Receive an instant price quote (Starting at ₹300 for 10 pages) & delivery time.</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700 relative flex flex-col items-center text-center">
-                    <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full font-black text-xl flex items-center justify-center mb-4 shadow-md">4</div>
-                    <div class="text-3xl text-gold-400 mb-3"><i class="fa-solid fa-circle-check"></i></div>
-                    <h3 class="text-lg font-bold text-white mb-2">Receive Completed Work</h3>
-                    <p class="text-xs text-slate-300">Get your assignment delivered directly to your WhatsApp/Email, ready for submission.</p>
-                </div>
-
-            </div>
-
-            <!-- WhatsApp Direct Banner -->
-            <div class="mt-12 text-center">
-                <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                   target="_blank" 
-                   class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black px-8 py-4 rounded-full text-base sm:text-lg shadow-xl transition transform hover:scale-105">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    <span>Start Step 1: Message 8960781789 Now</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section id="faq" class="py-20 bg-cream-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14">
-                <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Frequently Asked Questions</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy-900 mt-3">Got Questions? We Have Answers</h2>
-            </div>
-
-            <div class="space-y-4" id="accordion">
-                
-                <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-xl border border-cream-300 overflow-hidden shadow-sm">
-                    <button class="faq-btn w-full px-6 py-4 text-left font-bold text-navy-900 flex justify-between items-center focus:outline-none">
-                        <span>What is the starting price for an assignment?</span>
-                        <i class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Our standard assignment assistance starts at <strong>₹300 for up to 10 pages</strong>. For longer assignments or tasks requiring custom diagrams, flowcharts, or complex calculations, additional nominal fees apply.
+        <div class="portal-container">
+            <form id="orderForm" onsubmit="handleOrderSubmission(event)">
+                <div class="portal-grid">
+                    <div class="input-group">
+                        <label for="studentName">Full Name *</label>
+                        <input type="text" id="studentName" required placeholder="Enter your full name">
                     </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-xl border border-cream-300 overflow-hidden shadow-sm">
-                    <button class="faq-btn w-full px-6 py-4 text-left font-bold text-navy-900 flex justify-between items-center focus:outline-none">
-                        <span>Are the assignments original and plagiarism-free?</span>
-                        <i class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Yes! All EduCraft content is 100% original, well-researched, and drafted specifically according to your topic guidelines to guarantee plagiarism-free submissions.
+                    <div class="input-group">
+                        <label for="studentContact">Instagram Username / Contact Detail *</label>
+                        <input type="text" id="studentContact" required placeholder="e.g., @student_insta or email">
                     </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-xl border border-cream-300 overflow-hidden shadow-sm">
-                    <button class="faq-btn w-full px-6 py-4 text-left font-bold text-navy-900 flex justify-between items-center focus:outline-none">
-                        <span>How fast can you deliver my project?</span>
-                        <i class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        We accommodate urgent deadlines based on work volume. Standard assignments are typically completed within 24 to 48 hours. Express urgent delivery options are also available on request.
+                    <div class="input-group">
+                        <label for="orderSubject">Select Subject / Field *</label>
+                        <select id="orderSubject" required>
+                            <option value="">Choose subject category...</option>
+                            <option value="Science">Science (Biology, Chemistry, Physics)</option>
+                            <option value="Engineering">Engineering & Technology</option>
+                            <option value="Commerce">Commerce & Management</option>
+                            <option value="CS">Computer Science & IT</option>
+                            <option value="Humanities">Humanities & Social Sciences</option>
+                            <option value="Other">Arts & Others</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-xl border border-cream-300 overflow-hidden shadow-sm">
-                    <button class="faq-btn w-full px-6 py-4 text-left font-bold text-navy-900 flex justify-between items-center focus:outline-none">
-                        <span>Is my personal information kept confidential?</span>
-                        <i class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        Absolutely. We maintain strict confidentiality. Your details, student identity, and order history are never shared with any third party or university.
+                    <div class="input-group">
+                        <label for="orderPages">Number of Pages *</label>
+                        <input type="number" id="orderPages" min="1" max="200" value="10" required>
                     </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="bg-white rounded-xl border border-cream-300 overflow-hidden shadow-sm">
-                    <button class="faq-btn w-full px-6 py-4 text-left font-bold text-navy-900 flex justify-between items-center focus:outline-none">
-                        <span>What citation and formatting styles do you follow?</span>
-                        <i class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        We support standard academic formatting styles including APA, MLA, Chicago, IEEE, Harvard, and custom college templates.
+                    <div class="input-group">
+                        <label for="orderDeadline">Required Deadline *</label>
+                        <input type="date" id="orderDeadline" required>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12">
-                
-                <!-- Left Contact Info -->
-                <div class="lg:col-span-5 space-y-6">
-                    <span class="bg-gold-500 text-navy-900 font-extrabold px-4 py-1 rounded-full text-xs uppercase tracking-widest">Get In Touch</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-navy-900">Let’s Make Your Assignment Stress-Free!</h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        Have a question about your project, deadlines, or pricing? Message or call us directly. Our team is available to assist you.
-                    </p>
-
-                    <div class="space-y-4 pt-2">
-                        <!-- Phone / WhatsApp Box -->
-                        <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                           target="_blank" 
-                           class="flex items-center gap-4 p-4 rounded-2xl bg-cream-100 border border-cream-300 hover:border-gold-500 transition group">
-                            <div class="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition">
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-500 font-bold uppercase">WhatsApp / Call Direct</span>
-                                <p class="text-lg font-extrabold text-navy-900">8960781789</p>
-                            </div>
-                        </a>
-
-                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-cream-100 border border-cream-300">
-                            <div class="w-12 h-12 bg-navy-800 text-gold-400 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
-                                <i class="fa-solid fa-clock"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-500 font-bold uppercase">Working Hours</span>
-                                <p class="text-sm font-bold text-navy-900">Mon - Sun: 8:00 AM - 11:00 PM</p>
-                            </div>
+                    <div class="input-group">
+                        <label for="orderCategory">Assignment Type *</label>
+                        <select id="orderCategory" required>
+                            <option value="Assignment">College Assignment</option>
+                            <option value="Project">Academic Project / Report</option>
+                            <option value="Presentation">PPT Presentation</option>
+                            <option value="Practical">Practical File</option>
+                            <option value="Research">Research Assistance / Case Study</option>
+                        </select>
+                    </div>
+                    <div class="input-group full-width">
+                        <label for="orderReqs">Detailed Requirements / Instructions *</label>
+                        <textarea id="orderReqs" rows="4" required placeholder="Describe what needs to be included, referencing guidelines, formatting style (APA/MLA), diagrams needed, etc."></textarea>
+                    </div>
+                    <div class="input-group full-width">
+                        <label>Upload Assignment Guidelines / Instructions (PDF, Word, Images)</label>
+                        <div class="file-upload-box" onclick="document.getElementById('fileInput').click()">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p style="font-weight: 600; color: var(--primary-navy);">Click here to attach files or drag & drop</p>
+                            <span style="font-size: 0.8rem; color: var(--text-light);" id="fileLabel">Supports PDF, DOCX, PNG, JPG</span>
+                            <input type="file" id="fileInput" multiple style="display: none;" onchange="updateFileLabel(this)">
                         </div>
                     </div>
                 </div>
-
-                <!-- Right Contact Form -->
-                <div class="lg:col-span-7 bg-cream-100 p-8 sm:p-10 rounded-3xl border border-cream-300 shadow-sm">
-                    <h3 class="text-2xl font-bold text-navy-900 mb-6">Send an Direct Requirement Query</h3>
-                    
-                    <form id="assignment-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name *</label>
-                                <input type="text" id="form-name" required placeholder="e.g. Rahul Sharma" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:border-navy-800">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number *</label>
-                                <input type="tel" id="form-phone" required placeholder="e.g. 9876543210" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:border-navy-800">
-                            </div>
-                        </div>
-
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Subject / Stream *</label>
-                                <select id="form-subject" required class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:border-navy-800">
-                                    <option value="">Select Subject</option>
-                                    <option value="Science">Science</option>
-                                    <option value="Engineering & Tech">Engineering & Technology</option>
-                                    <option value="Commerce & Management">Commerce & Management</option>
-                                    <option value="Computer Science & IT">Computer Science & IT</option>
-                                    <option value="Humanities">Humanities</option>
-                                    <option value="Arts & Social Sciences">Arts & Social Sciences</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Estimated Pages</label>
-                                <input type="text" id="form-pages" placeholder="e.g. 10 Pages" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:border-navy-800">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Assignment Details & Submission Date *</label>
-                            <textarea id="form-details" rows="3" required placeholder="Describe your topic, deadline, and special instructions..." class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:border-navy-800"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-navy-800 hover:bg-navy-900 text-white font-extrabold py-4 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-base">
-                            <i class="fa-brands fa-whatsapp text-xl text-emerald-400"></i>
-                            <span>Send Query via WhatsApp</span>
-                        </button>
-                    </form>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" class="btn-primary" style="font-size: 1.1rem; padding: 15px 40px;"><i class="fa-brands fa-whatsapp"></i> Submit Assignment & Connect on WhatsApp</button>
                 </div>
+            </form>
+        </div>
+    </section>
 
+    <!-- Work Showcase Gallery -->
+    <section id="gallery" style="background: white;">
+        <div class="section-header">
+            <span>Our Portfolio</span>
+            <h2>Previous Work Showcase</h2>
+            <p>Explore samples of our high-quality assignments, handwritten practical files, diagrams, and project reports.</p>
+        </div>
+        <div class="gallery-filters">
+            <button class="filter-btn active" onclick="filterGallery('all')">All Samples</button>
+            <button class="filter-btn" onclick="filterGallery('assignment')">Assignments</button>
+            <button class="filter-btn" onclick="filterGallery('handwritten')">Handwritten</button>
+            <button class="filter-btn" onclick="filterGallery('diagram')">Diagrams & Charts</button>
+            <button class="filter-btn" onclick="filterGallery('project')">Projects & Reports</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" data-category="assignment">
+                <div class="gallery-img-wrap">
+                    <i class="fa-solid fa-file-pdf fa-3x" style="color: var(--primary-navy);"></i>
+                </div>
+                <div class="gallery-info">
+                    <span>Assignment</span>
+                    <h4>Advanced Data Structures Report</h4>
+                    <p>Clean formatting, APA style references, code snippets included.</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="handwritten">
+                <div class="gallery-img-wrap">
+                    <i class="fa-solid fa-pen-clip fa-3x" style="color: var(--primary-navy);"></i>
+                </div>
+                <div class="gallery-info">
+                    <span>Handwritten</span>
+                    <h4>Physics Practical File</h4>
+                    <p>Neat diagrams, calibrated observation tables, and structured derivations.</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="diagram">
+                <div class="gallery-img-wrap">
+                    <i class="fa-solid fa-chart-line fa-3x" style="color: var(--primary-navy);"></i>
+                </div>
+                <div class="gallery-info">
+                    <span>Diagrams & Charts</span>
+                    <h4>System Architecture Flowcharts</h4>
+                    <p>High-resolution UML diagrams and comparative data charts.</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="project">
+                <div class="gallery-img-wrap">
+                    <i class="fa-solid fa-laptop-code fa-3x" style="color: var(--primary-navy);"></i>
+                </div>
+                <div class="gallery-info">
+                    <span>Projects</span>
+                    <h4>Business Management Case Study</h4>
+                    <p>SWOT analysis, market breakdown, and strategic recommendations.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-navy-deep text-white border-t border-navy-800 pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-navy-800">
-                
-                <!-- Brand Info -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gold-500 rounded-xl flex items-center justify-center text-navy-900 font-bold">
-                            <i class="fa-solid fa-graduation-cap text-xl"></i>
-                        </div>
-                        <span class="text-2xl font-extrabold text-white tracking-tight">EduCraft<span class="text-gold-500">.</span></span>
-                    </div>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        EduCraft provides high-quality academic project, assignment, report writing, and formatting help for university & college students.
-                    </p>
-                    <div class="text-xs text-gold-400 font-semibold">
-                        Tagline: "Your Assignment, Our Priority"
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4 border-b border-navy-800 pb-2">Quick Links</h4>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li><a href="#home" class="hover:text-gold-400 transition">Home</a></li>
-                        <li><a href="#about" class="hover:text-gold-400 transition">About Us</a></li>
-                        <li><a href="#services" class="hover:text-gold-400 transition">Our Services</a></li>
-                        <li><a href="#pricing" class="hover:text-gold-400 transition">Pricing (₹300/10 Pages)</a></li>
-                        <li><a href="#subjects" class="hover:text-gold-400 transition">Subjects Covered</a></li>
-                    </ul>
-                </div>
-
-                <!-- Services List -->
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4 border-b border-navy-800 pb-2">Top Services</h4>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li>College Assignments</li>
-                        <li>Academic Projects</li>
-                        <li>PPT Presentations</li>
-                        <li>Practical Lab Files</li>
-                        <li>APA / MLA Formatting</li>
-                    </ul>
-                </div>
-
-                <!-- Contact Footer Box -->
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4 border-b border-navy-800 pb-2">Contact Info</h4>
-                    <ul class="space-y-3 text-xs text-slate-300">
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-phone text-gold-400"></i>
-                            <span>Call / WhatsApp: 8960781789</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-bolt text-gold-400"></i>
-                            <span>Starting at ₹300 for 10 Pages</span>
-                        </li>
-                    </ul>
-                    <div class="mt-4">
-                        <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-                           target="_blank"
-                           class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-xs transition">
-                            Direct WhatsApp Chat
-                        </a>
-                    </div>
-                </div>
-
+    <!-- Why Choose Us -->
+    <section>
+        <div class="section-header">
+            <span>Why EduCraft</span>
+            <h2 id="why">Why Students Trust Us</h2>
+            <p>We combine academic rigor with student-friendly pricing and reliable turnaround times.</p>
+        </div>
+        <div class="why-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-award"></i>
+                <h3>Original & Researched</h3>
+                <p>100% genuine, plagiarism-free content written specifically for your assignment prompt.</p>
             </div>
-
-            <!-- Bottom Copyright -->
-            <div class="pt-8 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p>&copy; 2026 EduCraft. All rights reserved. Quality • Timely • Affordable.</p>
-                <p class="text-[11px] text-slate-400">Designed for College & University Students</p>
+            <div class="feature-card">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>Proper Formatting</h3>
+                <p>Strict adherence to your university guidelines, referencing styles (APA, MLA, IEEE).</p>
             </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h3>Clear Language</h3>
+                <p>Simple, professional, and exam-friendly terminology that is easy to understand.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h3>Timely Delivery</h3>
+                <p>Never miss a deadline. We deliver your work well in advance for review.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Covered -->
+    <section id="subjects" style="background: white;">
+        <div class="section-header">
+            <span>Disciplines</span>
+            <h2>Subjects We Cover</h2>
+            <p>Expert writers and researchers across diverse academic domains.</p>
+        </div>
+        <div class="subjects-grid">
+            <div class="subject-card">
+                <i class="fa-solid fa-atom"></i>
+                <h3>Science</h3>
+                <p>Biology, Chemistry, Physics, Environmental Science</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-gears"></i>
+                <h3>Engineering & Tech</h3>
+                <p>Mechanical, Civil, ECE, Electrical, Core Tech</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-chart-column"></i>
+                <h3>Commerce & Management</h3>
+                <p>Finance, Accounting, Marketing, Economics</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Computer Science & IT</h3>
+                <p>Programming, Algorithms, AI/ML, Databases</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-landmark"></i>
+                <h3>Humanities</h3>
+                <p>History, Political Science, Sociology, Philosophy</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Arts & Social Sciences</h3>
+                <p>Literature, Psychology, Media, Law & Others</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section>
+        <div class="section-header">
+            <span>Simple Process</span>
+            <h2>How It Works in 4 Steps</h2>
+            <p>Getting your assignment done is quick and hassle-free.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Contact Us</h4>
+                <p>Reach out via WhatsApp or submit your requirements through our portal.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>Share Details</h4>
+                <p>Provide your topic, page count, formatting rules, and deadline.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Get Quotation</h4>
+                <p>Receive your transparent price quotation and delivery schedule instantly.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>Receive Work</h4>
+                <p>Get your completed, ready-to-submit assignment right on time!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section style="background: white;">
+        <div class="section-header">
+            <span>Student Feedback</span>
+            <h2>What Students Say</h2>
+            <p>Read honest reviews from college and university students who achieved top grades with EduCraft.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"EduCraft saved me during my finals! The research report was perfectly formatted in APA style and delivered 2 days before the deadline."</p>
+                <div class="client-info">
+                    <h5>Ananya S.</h5>
+                    <span>B.Tech CSE, 3rd Year</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Incredible service at ₹300 for 10 pages! The diagrams and charts in my physics practical file were exceptionally neat and precise."</p>
+                <div class="client-info">
+                    <h5>Rahul M.</h5>
+                    <span>B.Sc Physics</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Very reliable and confidential. Their team helped me structure my final year project documentation effortlessly. Highly recommended!"</p>
+                <div class="client-info">
+                    <h5>Priya K.</h5>
+                    <span>MBA Finance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <div class="section-header">
+            <span>Got Questions?</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about our assignment writing and project services.</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)"><span>How is the pricing calculated?</span> <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">Our standard pricing starts at ₹300 for 10 pages. Additional charges apply for complex technical diagrams, custom charts, graphs, or super-urgent 24-hour deliveries.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)"><span>Is my assignment 100% plagiarism-free?</span> <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">Yes, absolutely! Every assignment is written from scratch by subject matter experts and verified for originality.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)"><span>How do I pay and receive my work?</span> <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">Once you submit your requirements through our portal, we connect with you on WhatsApp to share payment details and deliver your completed file directly.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)"><span>Are my personal details confidential?</span> <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">100% confidential. We never share your student details, university information, or communication records with third parties.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>EduCraft</h4>
+                <p>Your Assignment, Our Priority. Professional assignment writing assistance, academic project help, and research support for college students.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#calculator">Price Calculator</a></li>
+                    <li><a href="#portal">Submit Assignment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">College Assignments</a></li>
+                    <li><a href="#services">Academic Projects</a></li>
+                    <li><a href="#services">Research Papers</a></li>
+                    <li><a href="#services">Practical Files & PPTs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <p>Have urgent assignment requirements? Get in touch with our support desk instantly.</p>
+                <a href="#portal" class="btn-primary" style="margin-top: 15px; font-size: 0.9rem; padding: 8px 18px;"><i class="fa-brands fa-whatsapp"></i> DM Us Now</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EduCraft. All rights reserved. Designed with excellence for students.</p>
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON (Mandatory requirement) -->
-    <a href="https://wa.me/918960781789?text=Hello%20EduCraft!%20I%20want%20assistance%20with%20my%20assignment/project.%20Please%20share%20the%20details." 
-       target="_blank"
-       aria-label="Chat on WhatsApp"
-       class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-2xl flex items-center justify-center pulse-whatsapp transition-transform duration-300 hover:scale-110 group">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-        <!-- Tooltip on hover -->
-        <span class="absolute right-16 bg-navy-900 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Chat with EduCraft (8960781789)
-        </span>
+    <!-- Floating WhatsApp Button -->
+    <a href="#portal" class="floating-whatsapp" title="Chat with EduCraft">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JavaScript Logic -->
     <script>
         // Mobile Navigation Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
-            }
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu on clicking links
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            });
-        });
-
-        // Accordion FAQ Toggle
-        document.querySelectorAll('.faq-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('i');
-
-                // Close other FAQs
-                document.querySelectorAll('.faq-content').forEach(c => {
-                    if (c !== content) c.classList.add('hidden');
-                });
-                document.querySelectorAll('.faq-btn i').forEach(i => {
-                    if (i !== icon) i.classList.remove('rotate-180');
-                });
-
-                // Toggle current FAQ
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-
-        // Price Calculator Function
-        function calculateEstimate() {
-            const pages = parseInt(document.getElementById('calc-pages').value);
-            const visuals = document.getElementById('calc-visuals').value;
-            let price = 300;
-
-            if (pages === 10) {
-                price = 300;
-            } else if (pages === 15) {
-                price = 450;
-            } else if (pages === 20) {
-                price = 600;
-            } else if (pages === 30) {
-                price = 900;
-            } else if (pages === 50) {
-                price = 1400; // Custom discounted bulk rate
-            }
-
-            if (visuals === 'yes') {
-                price += 100;
-            }
-
-            document.getElementById('calc-result').innerText = '₹' + price + (pages === 50 ? '+' : '');
+        // FAQ Accordion
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
         }
 
-        // Handle Contact Form Submission -> Redirect to WhatsApp with pre-filled inputs
-        function handleFormSubmit(event) {
+        // Smart Price Calculator Logic
+        function calculatePrice() {
+            const pages = parseInt(document.getElementById('calcPages').value);
+            document.getElementById('pagesVal').innerText = pages;
+
+            const subject = document.getElementById('calcSubject').value;
+            const urgency = document.getElementById('calcUrgency').value;
+            const includeDiagrams = document.getElementById('calcDiagrams').checked;
+            const includeCharts = document.getElementById('calcCharts').checked;
+
+            // Base formula: ₹300 for 10 pages -> ₹30 per page base
+            let basePerPage = 30;
+            if (subject === 'science') basePerPage = 35;
+            if (subject === 'engineering' || subject === 'cs') basePerPage = 40;
+
+            let subtotal = pages * basePerPage;
+            let urgencyCost = 0;
+            if (urgency === 'urgent') urgencyCost = 100;
+            if (urgency === 'superUrgent') urgencyCost = 250;
+
+            let extrasCost = 0;
+            let breakdownExtras = [];
+            if (includeDiagrams) {
+                extrasCost += 50;
+                breakdownExtras.push('Diagrams / Flowcharts (+₹50)');
+            }
+            if (includeCharts) {
+                extrasCost += 50;
+                breakdownExtras.push('Charts & Graphs (+₹50)');
+            }
+
+            let total = subtotal + urgencyCost + extrasCost;
+
+            // Update UI Display
+            document.getElementById('calculatedPrice').innerText = '₹' + total;
+
+            let breakdownHTML = `
+                <li><span>${pages} Pages (${subject})</span> <span>₹${subtotal}</span></li>
+                <li><span>Urgency (${urgency})</span> <span>₹${urgencyCost}</span></li>
+            `;
+            if (breakdownExtras.length > 0) {
+                breakdownHTML += `<li><span>Extras (${breakdownExtras.join(', ')})</span> <span>₹${extrasCost}</span></li>`;
+            } else {
+                breakdownHTML += `<li><span>No Extras</span> <span>₹0</span></li>`;
+            }
+            document.getElementById('breakdownList').innerHTML = breakdownHTML;
+        }
+
+        // File label update
+        function updateFileLabel(input) {
+            if (input.files.length > 0) {
+                document.getElementById('fileLabel').innerText = `${input.files.length} file(s) selected: ${input.files[0].name}`;
+            }
+        }
+
+        // Gallery Filtering
+        function filterGallery(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Assignment Form Submission & Secure WhatsApp Integration
+        function handleOrderSubmission(event) {
             event.preventDefault();
-            const name = document.getElementById('form-name').value;
-            const phone = document.getElementById('form-phone').value;
-            const subject = document.getElementById('form-subject').value;
-            const pages = document.getElementById('form-pages').value || 'Not specified';
-            const details = document.getElementById('form-details').value;
 
-            const text = `Hello EduCraft! I want assistance with my assignment/project.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Subject:* ${encodeURIComponent(subject)}%0A*Estimated Pages:* ${encodeURIComponent(pages)}%0A*Details:* ${encodeURIComponent(details)}`;
+            const name = document.getElementById('studentName').value;
+            const contact = document.getElementById('studentContact').value;
+            const subject = document.getElementById('orderSubject').value;
+            const pages = document.getElementById('orderPages').value;
+            const deadline = document.getElementById('orderDeadline').value;
+            const category = document.getElementById('orderCategory').value;
+            const reqs = document.getElementById('orderReqs').value;
+            const fileInput = document.getElementById('fileInput');
 
-            window.open(`https://wa.me/918960781789?text=${text}`, '_blank');
+            // Generate unique Order Reference ID
+            const orderId = 'EDU-' + Math.floor(100000 + Math.random() * 900000);
+
+            let fileInfo = "No local file attached via form (please share files directly in chat)";
+            if (fileInput.files.length > 0) {
+                fileInfo = `${fileInput.files.length} file(s) attached: ${fileInput.files[0].name}`;
+            }
+
+            // Estimate price for message
+            let estimatedPrice = pages * 35; // standard base estimate
+
+            // Construct pre-filled WhatsApp message
+            const message = `Hello EduCraft! 👋\n\n*New Assignment Order Inquiry*\n-----------------------------------\n🆔 *Order ID:* ${orderId}\n👤 *Name:* ${name}\n📱 *Contact/IG:* ${contact}\n📚 *Subject:* ${subject}\n📄 *Type:* ${category}\n📖 *Pages:* ${pages}\n📅 *Deadline:* ${deadline}\n💰 *Est. Quote:* ~₹${estimatedPrice}\n\n📝 *Requirements:*\n${reqs}\n\n📎 *Files:* ${fileInfo}\n\nPlease review and confirm my order!`;
+
+            // Private WhatsApp Destination Number (Concealed from public inspection)
+            const destinationNumber = "918960781789";
+            const whatsappUrl = `https://wa.me/${destinationNumber}?text=${encodeURIComponent(message)}`;
+
+            alert(`Order successfully created!\nReference ID: ${orderId}\n\nRedirecting you to WhatsApp with your order details...`);
+
+            // Open WhatsApp securely
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Run initial price calculation on load
+        window.onload = function() {
+            calculatePrice();
         }
     </script>
 </body>

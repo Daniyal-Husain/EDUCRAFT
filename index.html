@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -529,7 +528,7 @@
 
     <!-- HIDDEN OWNER ADMIN SECTION -->
     <div id="adminSection" class="hidden bg-slate-900 text-white py-16 px-6 border-t-4 border-gold-500">
-        <div class="max-w-xl mx-auto bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 space-y-6">
+        <div class="max-w-2xl mx-auto bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 space-y-6">
             <h3 class="text-xl font-bold text-gold-400 flex items-center gap-2"><i class="fa-solid fa-lock"></i> Owner Admin Dashboard</h3>
             
             <div class="grid grid-cols-2 gap-4">
@@ -543,6 +542,7 @@
                 </div>
             </div>
 
+            <!-- Upload New Sample Form -->
             <div class="space-y-4 pt-2 border-t border-slate-700">
                 <h4 class="font-bold text-sm text-white">Upload New Work Sample (Image / PDF)</h4>
                 <input type="text" id="newTitle" placeholder="Sample Title (e.g. Physics Lab Report)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white">
@@ -557,7 +557,16 @@
                 <button onclick="addNewSample()" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-900 font-extrabold py-3 rounded-xl transition">Upload Sample to Gallery</button>
             </div>
 
-            <button onclick="closeAdmin()" class="w-full bg-slate-700 text-slate-300 py-2.5 rounded-xl text-xs font-bold">Close Admin Panel</button>
+            <!-- Manage / Delete Uploaded Samples Section -->
+            <div class="space-y-4 pt-4 border-t border-slate-700">
+                <h4 class="font-bold text-sm text-gold-400 flex items-center gap-2"><i class="fa-solid fa-trash-can"></i> Manage / Delete Uploaded Samples</h4>
+                <p class="text-xs text-slate-400">You can remove any custom uploaded sample instantly from the gallery below:</p>
+                <div id="adminSamplesList" class="space-y-2 max-h-48 overflow-y-auto pr-2">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <button onclick="closeAdmin()" class="w-full bg-slate-700 text-slate-300 py-2.5 rounded-xl text-xs font-bold mt-4">Close Admin Panel</button>
         </div>
     </div>
 
@@ -662,6 +671,7 @@
                 const adminSec = document.getElementById('adminSection');
                 if (adminSec) {
                     adminSec.classList.remove('hidden');
+                    loadAdminSamplesList();
                     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                 }
             } else if (pwd !== null) {
@@ -692,7 +702,6 @@
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
-                // Default placeholder image if no file selected
                 saveSampleData(title, category, desc, 'https://placehold.co/600x800/0f2a4a/ffffff?text=' + encodeURIComponent(title));
             }
         }
@@ -708,6 +717,48 @@
             document.getElementById('newDesc').value = '';
             document.getElementById('sampleFileInput').value = '';
             loadSavedSamples();
+            loadAdminSamplesList();
+        }
+
+        // Delete specific uploaded sample by index
+        function deleteSample(index) {
+            let samples = JSON.parse(localStorage.getItem('educraft_samples') || '[]');
+            if (index >= 0 && index < samples.length) {
+                if (confirm(`Are you sure you want to delete "${samples[index].title}"?`)) {
+                    samples.splice(index, 1);
+                    localStorage.setItem('educraft_samples', JSON.stringify(samples));
+                    loadSavedSamples();
+                    loadAdminSamplesList();
+                    alert("Sample deleted successfully!");
+                }
+            }
+        }
+
+        function loadAdminSamplesList() {
+            const listContainer = document.getElementById('adminSamplesList');
+            if (!listContainer) return;
+            let samples = JSON.parse(localStorage.getItem('educraft_samples') || '[]');
+            
+            if (samples.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-slate-500 italic">No custom uploaded samples yet.</p>`;
+                return;
+            }
+
+            let listHtml = '';
+            samples.forEach((s, idx) => {
+                listHtml += `
+                    <div class="flex items-center justify-between bg-slate-900 p-3 rounded-xl border border-slate-700">
+                        <div class="truncate pr-2">
+                            <span class="font-bold text-xs text-white block truncate">${s.title}</span>
+                            <span class="text-[10px] text-slate-400">${s.category}</span>
+                        </div>
+                        <button onclick="deleteSample(${idx})" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition flex-shrink-0">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = listHtml;
         }
 
         function loadSavedSamples() {
